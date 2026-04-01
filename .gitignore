@@ -1,0 +1,29 @@
+# Pliki pomocnicze / skrypty
+*.py
+modify_kalkulator.py
+swap.py
+swap2.py
+update_v2.py
+
+# Pliki markdown robocze
+scrape_planetaMebli.md.md
+CLAUDE.md
+frontend-design.md
+
+# System Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+
+# Edytory
+.vscode/
+.idea/
+*.code-workspace
+
+# Pliki tymczasowe
+*.tmp
+*.log
+*.bak

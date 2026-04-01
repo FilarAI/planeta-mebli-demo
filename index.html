@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planeta Mebli — Meble na Wymiar | Kraków, Podhale, Śląsk</title>
+  <meta name="description" content="Producent mebli na wymiar od 2004 roku. Kuchnie, szafy, garderoby, meble łazienkowe. Kraków, Podhale, Śląsk. Zadzwoń: +48 605 744 711" />
+  <!-- Favicon -->
+  <link rel="icon" href="planeta ziobro logo.png" type="image/png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Planeta Mebli — Meble na Wymiar | Kraków, Podhale, Śląsk" />
+  <meta property="og:description" content="Producent mebli na wymiar od 2004 roku. Kuchnie, szafy, garderoby, meble łazienkowe. Kraków, Podhale, Śląsk." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:image" content="planeta ziobro logo.png" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-bg:       #111111;
+      --color-bg-light: #F8F5F0;
+      --color-accent:   #CC1C1C;
+      --color-white:    #FFFFFF;
+      --color-dark:     #1A1A1A;
+      --color-text:     #2C2C2C;
+      --color-muted:    #6B6B6B;
+      --color-border:   #E0D8CF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-white);
+      overflow-x: hidden;
+    }
+
+    /* ── Typography ── */
+    .font-display  { font-family: 'Bebas Neue', cursive; }
+    .font-serif    { font-family: 'Playfair Display', serif; }
+    .font-body     { font-family: 'DM Sans', sans-serif; }
+
+    /* ── Grain texture on dark sections ── */
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      z-index: 1;
+    }
+    .grain > * { position: relative; z-index: 2; }
+
+    /* ── Red separator line ── */
+    .red-line { height: 4px; background: var(--color-accent); }
+
+    /* ── Reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(17,17,17,0.97);
+      border-bottom: 1px solid rgba(204,28,28,0.25);
+      backdrop-filter: blur(8px);
+      transition: box-shadow 0.3s;
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+    }
+    .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .nav-link:hover { color: #fff; }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/38029a1f-78a6-44f2-9c99-258c4fb94b04.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: scroll;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(17,17,17,0.88) 0%, rgba(17,17,17,0.62) 60%, rgba(17,17,17,0.78) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(4rem, 12vw, 11rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+    .hero-sub {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.55);
+    }
+    .hero-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--color-accent);
+    }
+
+    /* ── Buttons ── */
+    .btn-red {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      background: var(--color-accent);
+      color: #fff;
+      border: 2px solid var(--color-accent);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .btn-red:hover {
+      background: #a51515;
+      border-color: #a51515;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(204,28,28,0.35);
+    }
+    .btn-outline {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      border-color: #fff;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ── Scroll indicator ── */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+      animation: bounce 2.2s infinite;
+    }
+    .scroll-indicator span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── Stats bar ── */
+    #stats {
+      background: var(--color-dark);
+      border-top: 4px solid var(--color-accent);
+      border-bottom: 4px solid var(--color-accent);
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      color: #fff;
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+    .stat-sep {
+      width: 1px;
+      height: 60px;
+      background: var(--color-accent);
+      opacity: 0.5;
+    }
+
+    /* ── O Firmie (light) ── */
+    #o-firmie {
+      background: var(--color-bg-light);
+      color: var(--color-text);
+    }
+    .section-h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+    }
+    .section-h2-dark { color: var(--color-text); }
+    .section-h2-light { color: #fff; }
+
+    .red-underline {
+      display: inline-block;
+      position: relative;
+    }
+    .red-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background: var(--color-accent);
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-wrap img {
+      display: block;
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+    }
+    .about-image-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: 70%;
+      height: 70%;
+      border: 3px solid var(--color-accent);
+      z-index: 0;
+    }
+    .about-image-wrap img { position: relative; z-index: 1; }
+
+    .highlight-box {
+      background: var(--color-text);
+      color: #fff;
+      padding: 2rem;
+      border-left: 4px solid var(--color-accent);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ── Usługi (dark) ── */
+    #uslugi {
+      background: var(--color-bg);
+      position: relative;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: default;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.055);
+    }
+    .service-card:hover::after {
+      transform: scaleX(1);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.25rem;
+      color: var(--color-accent);
+    }
+    .service-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.65rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .service-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Realizacje highlights (light) ── */
+    #realizacje {
+      background: var(--color-bg-light);
+    }
+
+    .gallery-thumb {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .gallery-thumb:hover img {
+      transform: scale(1.06);
+    }
+    .gallery-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(204,28,28,0.82);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-thumb:hover .gallery-thumb-overlay {
+      opacity: 1;
+    }
+    .gallery-plus {
+      width: 48px;
+      height: 48px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+
+    /* ── Galeria pełna (dark) ── */
+    #galeria {
+      background: var(--color-bg);
+      position: relative;
+    }
+
+    .filter-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .gallery-item {
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .gallery-item.hidden-item {
+      display: none;
+    }
+
+    /* ── Slider ── */
+    .slider-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+      aspect-ratio: 16/9;
+    }
+    @media (min-width: 768px) { .slider-wrap { aspect-ratio: 21/9; } }
+    .slider-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+    }
+    .slide {
+      flex: 0 0 100%;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .slide:hover img { transform: scale(1.04); }
+    .slide-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .slide-zoom-icon {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .slide:hover .slide-zoom-icon { opacity: 1; }
+    .slider-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.18);
+      color: #fff; width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 3;
+      transition: background 0.2s, border-color 0.2s;
+      font-size: 1.6rem; line-height: 1;
+    }
+    .slider-btn:hover { background: var(--color-accent); border-color: var(--color-accent); }
+    .slider-prev { left: 1rem; }
+    .slider-next { right: 1rem; }
+    .slider-dots {
+      display: flex; justify-content: center; gap: 8px; margin-top: 1rem;
+    }
+    .slider-dot {
+      height: 4px; width: 24px; background: rgba(44,44,44,0.25);
+      border: none; cursor: pointer; transition: all 0.3s; padding: 0;
+    }
+    .slider-dot.active { background: var(--color-accent); width: 40px; }
+    .slide-label {
+      position: absolute; bottom: 1.25rem; left: 1.5rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.72rem;
+      font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65); z-index: 2;
+    }
+
+    /* ── Gallery overlay ── */
+    #gallery-overlay {
+      position: fixed; inset: 0;
+      z-index: 500;
+      background: var(--color-bg);
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    #gallery-overlay.open { transform: translateY(0); }
+    .go-header {
+      background: #0a0a0a;
+      border-bottom: 4px solid var(--color-accent);
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    @media (min-width: 1024px) { .go-header { padding: 0 3rem; } }
+    .go-title {
+      font-family: 'Bebas Neue', cursive; font-size: 1.5rem;
+      letter-spacing: 0.05em; color: #fff;
+    }
+    .go-title span { color: var(--color-accent); }
+    .go-close {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.5rem 1rem; cursor: pointer; transition: all 0.2s;
+    }
+    .go-close:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+    .go-body {
+      overflow-y: auto; flex: 1;
+      padding: 2.5rem 1.5rem 4rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    @media (min-width: 1024px) { .go-body { padding: 3rem 3rem 4rem; } }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.94);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      box-shadow: 0 8px 64px rgba(0,0,0,0.8);
+    }
+    .lb-close, .lb-prev, .lb-next {
+      position: absolute;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.75);
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: color 0.2s;
+      padding: 0.75rem;
+      z-index: 2;
+    }
+    .lb-close:hover, .lb-prev:hover, .lb-next:hover { color: #fff; }
+    .lb-close { top: 1.5rem; right: 1.5rem; font-size: 2rem; }
+    .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
+    .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
+
+    /* ── Kalkulator (light) ── */
+    #kalkulator {
+      background: var(--color-bg-light);
+      color: var(--color-text);
+    }
+
+    .calc-step-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 0.75rem;
+    }
+    .calc-step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      border: 2px solid var(--color-border);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fff;
+    }
+    .radio-option:hover {
+      border-color: var(--color-accent);
+      background: #fff5f5;
+    }
+    .radio-option.selected {
+      border-color: var(--color-accent);
+      background: #fff5f5;
+    }
+    .radio-option input[type="radio"] { accent-color: var(--color-accent); }
+    .radio-option span {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+
+    .calc-slider {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) var(--slider-pct, 30%), #E0D8CF var(--slider-pct, 30%), #E0D8CF 100%);
+      border-radius: 0;
+      outline: none;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      background: var(--color-accent);
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--color-accent);
+    }
+    .calc-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      background: var(--color-accent);
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--color-accent);
+    }
+
+    .price-result {
+      background: var(--color-text);
+      color: #fff;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .price-range {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--color-accent);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    .price-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Proces realizacji (dark) ── */
+    #proces {
+      background: var(--color-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-step {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .step-bg-number {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(6rem, 12vw, 10rem);
+      color: #fff;
+      opacity: 0.045;
+      position: absolute;
+      top: -1.5rem;
+      left: -0.5rem;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .step-icon {
+      width: 44px;
+      height: 44px;
+      color: var(--color-accent);
+      margin-bottom: 0.25rem;
+    }
+    .step-num-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+    .step-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+    }
+    .step-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+    }
+    .step-connector {
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .step-connector {
+        display: block;
+        height: 2px;
+        background: rgba(204,28,28,0.3);
+        flex: 1;
+        margin-top: 3.5rem;
+      }
+    }
+
+    /* ── Formularz (light) ── */
+    #formularz {
+      background: var(--color-bg-light);
+      color: var(--color-text);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .form-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .form-input, .form-select, .form-textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.9rem 1.1rem;
+      border: 2px solid var(--color-border);
+      background: #fff;
+      color: var(--color-text);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--color-accent);
+    }
+    .form-textarea { resize: vertical; min-height: 130px; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 18px; height: 18px; }
+    .contact-text a {
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .contact-text a:hover { color: var(--color-accent); }
+
+    /* ── Footer (dark) ── */
+    #footer {
+      background: #0a0a0a;
+      border-top: 4px solid var(--color-accent);
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+    }
+    .footer-logo span { color: var(--color-accent); }
+    .footer-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: rgba(255,255,255,0.85); }
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .social-btn svg { width: 18px; height: 18px; }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      display: none;
+      background: rgba(17,17,17,0.98);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    #mobile-menu.open { display: block; }
+    .mobile-nav-link {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s, background 0.2s;
+    }
+    .mobile-nav-link:hover { color: #fff; background: rgba(255,255,255,0.04); }
+
+    /* ── Hamburger ── */
+    .hamburger {
+      width: 28px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* ── Section spacing ── */
+    .section-pad { padding: 6rem 0; }
+    @media (min-width: 1024px) { .section-pad { padding: 8rem 0; } }
+
+    .container-xl {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    @media (min-width: 640px) { .container-xl { padding: 0 2rem; } }
+    @media (min-width: 1024px) { .container-xl { padding: 0 3rem; } }
+
+    /* ── Sub label ── */
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Misc ── */
+    .playfair-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+    img { display: block; }
+
+    /* ── Hero crossfade slider ── */
+    .hero-slides-container {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-indicator-dots {
+      position: absolute;
+      bottom: 6.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+    .hero-indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.35s, transform 0.35s;
+    }
+    .hero-indicator-dot.active {
+      background: var(--color-accent);
+      transform: scale(1.4);
+    }
+
+    /* ── Reviews carousel ── */
+    #opinie { background: var(--color-bg); position: relative; }
+    .review-card {
+      flex: 0 0 100%;
+      padding: 0 0.5rem;
+    }
+    @media (min-width: 768px) {
+      .review-card { flex: 0 0 33.333%; }
+    }
+    .review-card-inner {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-stars {
+      color: #FFB800;
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .review-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.78);
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+    .review-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .review-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(204,28,28,0.45);
+      color: rgba(204,28,28,0.85);
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.15rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+    .review-source {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.38);
+      margin-top: 2px;
+    }
+    .reviews-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      font-size: 1.6rem;
+      line-height: 1;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .reviews-nav-btn:hover { background: var(--color-accent); border-color: var(--color-accent); }
+    .reviews-prev { left: -1rem; }
+    .reviews-next { right: -1rem; }
+    @media (max-width: 767px) {
+      .reviews-prev { left: 0; }
+      .reviews-next { right: 0; }
+    }
+    .reviews-dot {
+      width: 24px;
+      height: 4px;
+      background: rgba(255,255,255,0.18);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .reviews-dot.active { background: var(--color-accent); width: 36px; }
+
+    /* ── Mobile sticky CTA ── */
+    #mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.45);
+    }
+    @media (max-width: 767px) {
+      #mobile-cta-bar { display: flex; }
+      body { padding-bottom: 56px; }
+    }
+    .mobile-cta-btn {
+      flex: 1;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Owner signature ── */
+    .owner-signature {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--color-muted);
+      font-size: 1rem;
+      margin-top: 1.25rem;
+      padding-left: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LIGHTBOX
+═══════════════════════════════════════════ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia">
+  <button class="lb-close" id="lb-close" aria-label="Zamknij">&#10005;</button>
+  <button class="lb-prev" id="lb-prev" aria-label="Poprzednie">&#8249;</button>
+  <img id="lb-img" src="" alt="Realizacja Planeta Mebli" />
+  <button class="lb-next" id="lb-next" aria-label="Następne">&#8250;</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     1. NAVBAR
+═══════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container-xl">
+    <div style="display:flex; align-items:center; justify-content:space-between; height:68px;">
+
+      <!-- Logo -->
+      <a href="#hero" style="text-decoration:none; display:flex; align-items:center; gap:0;">
+        <img src="planeta ziobro logo.png" alt="Planeta Mebli" style="max-height: 44px; width: auto;" />
+      </a>
+
+      <!-- Desktop links -->
+      <div style="display:none; gap:2.25rem; align-items:center;" class="desktop-nav">
+        <a href="#uslugi" class="nav-link">Usługi</a>
+        <a href="#realizacje" class="nav-link">Realizacje</a>
+        <a href="#proces" class="nav-link">Jak Działamy</a>
+        <a href="#kalkulator" class="nav-link">Wycena</a>
+        <a href="#opinie" class="nav-link">Opinie</a>
+      </div>
+
+      <!-- Desktop Social & CTA -->
+      <div class="desktop-nav" style="display:none; gap:1.5rem; align-items:center;">
+        <div style="display:flex; gap:0.6rem;">
+          <a href="mailto:ziobro@planetamebli.eu" class="social-btn" style="width:36px; height:36px;" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+          <a href="https://www.instagram.com/planetamebli_ziobro/" target="_blank" rel="noopener noreferrer" class="social-btn" style="width:36px; height:36px;" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/planetamebli" target="_blank" rel="noopener noreferrer" class="social-btn" style="width:36px; height:36px;" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+        <a href="#formularz" class="btn-red" style="padding:0.65rem 1.5rem; font-size:0.78rem;">
+          Umów pomiar
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger mobile-ham" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu">
+    <a href="#uslugi" class="mobile-nav-link">Usługi</a>
+    <a href="#realizacje" class="mobile-nav-link">Realizacje</a>
+    <a href="#proces" class="mobile-nav-link">Jak Działamy</a>
+    <a href="#kalkulator" class="mobile-nav-link">Wycena</a>
+    <a href="#opinie" class="mobile-nav-link">Opinie</a>
+    <div style="padding:1rem 1.5rem; display:flex; justify-content:center; gap:1rem;">
+      <a href="mailto:ziobro@planetamebli.eu" class="social-btn" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </a>
+      <a href="https://www.instagram.com/planetamebli_ziobro/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/planetamebli" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+    </div>
+    <div style="padding:0 1.5rem 1.5rem 1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+      <a href="tel:+48605744711" class="btn-red" style="display:block; text-align:center;">Zadzwoń: +48 605 744 711</a>
+      <a href="#formularz" class="btn-outline" style="display:block; text-align:center; padding:0.85rem 1.5rem; color:#fff;">Umów pomiar</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  @media (min-width: 768px) {
+    .desktop-nav { display: flex !important; }
+    .mobile-ham { display: none !important; }
+  }
+</style>
+
+
+<!-- ═══════════════════════════════════════════
+     2. HERO
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-slides-container" id="hero-slides-container">
+    <div class="hero-slide active" style="background-image:url('https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/38029a1f-78a6-44f2-9c99-258c4fb94b04.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/22ac0617-0010-48d2-b749-f249811d9239.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/f7dac8b3-7b23-45e5-83ca-1648261ffdbc.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/32b4e637-b517-452d-9522-6d607acd874a.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('https://us-wbe-img2.gr-cdn.com/user/da065e28-35c2-4c4d-a05f-2bb5174c17ed/1b3f50f0-a720-4e0f-ac50-088e3a61aed6.jpeg');"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content container-xl" style="padding-top:5rem; padding-bottom:6rem; width:100%;">
+    <div style="max-width:820px;">
+      <span class="eyebrow reveal">Od 2004 roku &mdash; Spytkowice</span>
+      <h1 class="hero-h1 reveal reveal-delay-1">MEBLE<br/>NA WYMIAR</h1>
+      <p class="hero-sub reveal reveal-delay-2" style="margin-top:0.6rem;">
+        Kraków &middot; Podhale &middot; Śląsk
+      </p>
+      <div class="hero-divider reveal reveal-delay-2" style="margin:1.75rem 0;"></div>
+      <p class="reveal reveal-delay-3" style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:clamp(1rem,2.2vw,1.2rem); color:rgba(255,255,255,0.72); line-height:1.75; max-width:560px;">
+        Od 2004 roku tworzymy meble, które pasują do przestrzeni i do ludzi. Nie boimy się trudnych projektów.
+      </p>
+      <style>
+        .hero-btns {
+          display: flex;
+          gap: 1rem;
+          margin-top: 2.25rem;
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero-btns a {
+          width: 100%;
+          max-width: 320px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+        @media (min-width: 768px) {
+          .hero-btns {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: stretch;
+          }
+          .hero-btns a {
+            width: auto;
+            min-width: 220px;
+            padding: 1rem 1.5rem;
+          }
+        }
+      </style>
+      <div class="reveal reveal-delay-4 hero-btns">
+        <a href="#formularz" class="btn-red">Umów pomiar</a>
+        <a href="#realizacje" class="btn-outline">Zobacz realizacje</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero slider dots -->
+  <div class="hero-indicator-dots" id="hero-indicator-dots" aria-label="Wybierz slajd hero">
+    <button class="hero-indicator-dot active" aria-label="Slajd 1"></button>
+    <button class="hero-indicator-dot" aria-label="Slajd 2"></button>
+    <button class="hero-indicator-dot" aria-label="Slajd 3"></button>
+    <button class="hero-indicator-dot" aria-label="Slajd 4"></button>
+    <button class="hero-indicator-dot" aria-label="Slajd 5"></button>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Przewiń</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     3. STATS BAR
+═══════════════════════════════════════════ -->
+<section id="stats">
+  <div class="container-xl">
+    <div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:0; padding:2.5rem 0;">
+
+      <div class="reveal" style="text-align:center; padding:1.25rem 3rem; flex:1; min-width:160px;">
+        <div class="stat-number" data-count-up="20" data-suffix="+">0</div>
+        <div class="stat-label">Lat doświadczenia</div>
+      </div>
+
+      <div class="stat-sep reveal reveal-delay-1"></div>
+
+      <div class="reveal reveal-delay-2" style="text-align:center; padding:1.25rem 3rem; flex:1; min-width:160px;">
+        <div class="stat-number" data-count-up="500" data-suffix="+">0</div>
+        <div class="stat-label">Zrealizowanych projektów</div>
+      </div>
+
+      <div class="stat-sep reveal reveal-delay-1"></div>
+
+      <div class="reveal reveal-delay-3" style="text-align:center; padding:1.25rem 3rem; flex:1; min-width:160px;">
+        <div class="stat-number" data-count-up="3" data-suffix="">0</div>
+        <div class="stat-label">Regiony obsługi</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     4. O FIRMIE
+═══════════════════════════════════════════ -->
+<section id="o-firmie" class="section-pad">
+  <div class="container-xl">
+    <div style="display:grid; grid-template-columns:1fr; gap:4rem; align-items:center;">
+
+      <!-- Text column -->
+      <div class="reveal" style="max-width:600px;">
+        <span class="eyebrow" style="color:var(--color-accent);">Nasza historia</span>
+        <h2 class="section-h2 section-h2-dark red-underline" style="margin-bottom:2rem;">
+          RZEMIOSŁO<br/>KTÓRE TRWA
+        </h2>
+        <p style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:1.02rem; line-height:1.85; color:var(--color-muted); margin-bottom:1.25rem;">
+          Od 2004 roku produkujemy meble na zamówienie. Realizujemy projekty mebli do kuchni, łazienki, pokoju dziennego czy sypialni — zarówno w stylu klasycznym, jak i nowoczesnym.
+        </p>
+        <p style="font-family:'DM Sans',sans-serif; font-weight:400; font-size:1.02rem; line-height:1.85; color:var(--color-muted); margin-bottom:1.5rem;">
+          Nasi klienci mogą personalizować meble spośród najróżniejszych kolorów frontów i blatów. Korzystamy z okuć sprawdzonych producentów — każde szafki i szuflady otwierają się gładko i sprawnie. Działamy głównie w województwie małopolskim i śląskim, ale obsługujemy klientów z całej Polski.
+        </p>
+        <div class="highlight-box reveal reveal-delay-2" style="margin-top:2rem;">
+          Nie boimy się trudnych i nietypowych projektów — jeśli inni mówią nie, my szukamy rozwiązania. Na jakości premium nie można oszczędzać.
+        </div>
+      </div>
+
+      <!-- Image column -->
+      <div class="reveal reveal-delay-1">
+        <div class="about-image-wrap" style="margin-bottom:2rem;">
+          <img
+            src="https://us-wbe-img2.gr-cdn.com/user/da065e28-35c2-4c4d-a05f-2bb5174c17ed/1b3f50f0-a720-4e0f-ac50-088e3a61aed6.jpeg"
+            alt="Właściciele Planeta Mebli"
+            loading="lazy"
+          />
+        </div>
+        <p class="owner-signature">&mdash; Józef i Ewa Ziobro</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 1024px) {
+    #o-firmie .container-xl > div {
+      grid-template-columns: 1.1fr 0.9fr !important;
+    }
+    .about-image-wrap { margin-bottom: 2rem !important; }
+  }
+</style>
+
+
+<div class="red-line"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     5. USŁUGI
+═══════════════════════════════════════════ -->
+<section id="uslugi" class="section-pad grain" style="position:relative;">
+  <div class="container-xl">
+    <div style="text-align:center; margin-bottom:4rem;">
+      <span class="eyebrow reveal">Specjalizacje</span>
+      <h2 class="section-h2 section-h2-light reveal reveal-delay-1">CO ROBIMY</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;">
+
+      <!-- Card 1 -->
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="10" width="40" height="28" rx="1"/>
+          <path d="M4 18h40M14 10v8M24 10v8M34 10v8"/>
+          <path d="M4 30h40M12 30v8M22 30v8M32 30v8"/>
+        </svg>
+        <div class="service-title">Kuchnie na wymiar</div>
+        <p class="service-desc">Projektujemy i wykonujemy kuchnie dopasowane do każdej przestrzeni — od klasycznych po nowoczesne. Zabudowy kuchenne pozwalają wykorzystać każdy centymetr. Blatów, fronty i okucia dobieramy razem z Tobą.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card reveal reveal-delay-1">
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="6" y="4" width="36" height="40" rx="1"/>
+          <path d="M6 14h36M6 34h36M16 4v40M32 4v40"/>
+          <circle cx="14" cy="24" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="34" cy="24" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+        <div class="service-title">Szafy i garderoby</div>
+        <p class="service-desc">Szafy przesuwne i wnękowe, garderoby walk-in, systemy przechowywania dopasowane do każdego metrażu. Ciche prowadnice, bespoke organizacja wnętrza, dowolna kolorystyka frontów.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card reveal reveal-delay-2">
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 36h32M8 36V20a4 4 0 014-4h24a4 4 0 014 4v16"/>
+          <path d="M16 16v-4a8 8 0 0116 0v4"/>
+          <rect x="18" y="24" width="12" height="8" rx="1"/>
+          <path d="M24 24v8"/>
+        </svg>
+        <div class="service-title">Meble łazienkowe</div>
+        <p class="service-desc">Szafki pod umywalkę, słupki, lustrzane zabudowy. Meble łazienkowe na wymiar z materiałów odpornych na wilgoć — estetyczne i funkcjonalne, skrojone pod każdy kształt i rozmiar łazienki.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card reveal reveal-delay-3">
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="6" width="20" height="28" rx="1"/>
+          <rect x="28" y="16" width="16" height="18" rx="1"/>
+          <path d="M4 38h40M4 42h40"/>
+          <path d="M12 6V4M12 34v2M20 18h4"/>
+        </svg>
+        <div class="service-title">Meble pokojowe</div>
+        <p class="service-desc">Regały, biblioteczki, szafki TV, zabudowy pod schody i skosy dachu. Meble do salonu i sypialni — projektowane indywidualnie, aby idealnie wpisać się w architekturę wnętrza.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 640px) {
+    #uslugi .container-xl > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (min-width: 1024px) {
+    #uslugi .container-xl > div:last-child { grid-template-columns: repeat(4, 1fr) !important; }
+  }
+</style>
+
+
+<div class="red-line"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     6. REALIZACJE — SLIDER
+═══════════════════════════════════════════ -->
+<section id="realizacje" class="section-pad">
+  <div class="container-xl">
+
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="eyebrow reveal">Portfolio</span>
+      <h2 class="section-h2 section-h2-dark reveal reveal-delay-1">NASZE<br/>REALIZACJE</h2>
+      <p class="reveal reveal-delay-2" style="font-family:'DM Sans',sans-serif; font-size:1rem; color:var(--color-muted); max-width:440px; margin:1rem auto 0; line-height:1.7;">
+        Wybrane projekty z ponad 500 realizacji. Kliknij zdjęcie aby powiększyć.
+      </p>
+    </div>
+
+    <!-- Slider -->
+    <div class="reveal">
+      <div class="slider-wrap" id="main-slider-wrap">
+        <div class="slider-track" id="slider-track">
+
+          <div class="slide" data-slide-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/22ac0617-0010-48d2-b749-f249811d9239.jpg" data-slide-alt="Kuchnia na wymiar">
+            <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/22ac0617-0010-48d2-b749-f249811d9239.jpg" alt="Kuchnia na wymiar" />
+            <div class="slide-gradient"></div>
+            <div class="slide-zoom-icon"><div class="gallery-plus" style="width:56px;height:56px;font-size:1.8rem;">+</div></div>
+            <div class="slide-label">Kuchnia &mdash; zabudowa na wymiar</div>
+          </div>
+
+          <div class="slide" data-slide-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/f7dac8b3-7b23-45e5-83ca-1648261ffdbc.jpg" data-slide-alt="Szafa na wymiar">
+            <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/f7dac8b3-7b23-45e5-83ca-1648261ffdbc.jpg" alt="Szafa na wymiar" loading="lazy" />
+            <div class="slide-gradient"></div>
+            <div class="slide-zoom-icon"><div class="gallery-plus" style="width:56px;height:56px;font-size:1.8rem;">+</div></div>
+            <div class="slide-label">Szafa &mdash; garderoba walk-in</div>
+          </div>
+
+          <div class="slide" data-slide-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/9c61ce4f-658b-4d90-8d73-fd8dad46e0cd.jpg" data-slide-alt="Meble łazienkowe">
+            <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/9c61ce4f-658b-4d90-8d73-fd8dad46e0cd.jpg" alt="Meble łazienkowe" loading="lazy" />
+            <div class="slide-gradient"></div>
+            <div class="slide-zoom-icon"><div class="gallery-plus" style="width:56px;height:56px;font-size:1.8rem;">+</div></div>
+            <div class="slide-label">Łazienka &mdash; meble na wymiar</div>
+          </div>
+
+          <div class="slide" data-slide-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/bc72e5d9-aed3-442a-8e94-7e4d6452280e.jpg" data-slide-alt="Meble pokojowe">
+            <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/bc72e5d9-aed3-442a-8e94-7e4d6452280e.jpg" alt="Meble pokojowe" loading="lazy" />
+            <div class="slide-gradient"></div>
+            <div class="slide-zoom-icon"><div class="gallery-plus" style="width:56px;height:56px;font-size:1.8rem;">+</div></div>
+            <div class="slide-label">Salon &mdash; meble pokojowe</div>
+          </div>
+
+          <div class="slide" data-slide-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/ebfd85fe-71ad-4ccf-9b30-2c64acbe6532.jpg" data-slide-alt="Kuchnia premium">
+            <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/ebfd85fe-71ad-4ccf-9b30-2c64acbe6532.jpg" alt="Kuchnia premium" loading="lazy" />
+            <div class="slide-gradient"></div>
+            <div class="slide-zoom-icon"><div class="gallery-plus" style="width:56px;height:56px;font-size:1.8rem;">+</div></div>
+            <div class="slide-label">Kuchnia &mdash; front lakierowany premium</div>
+          </div>
+
+        </div>
+
+        <button class="slider-btn slider-prev" id="slider-prev" aria-label="Poprzednie zdjęcie">&#8249;</button>
+        <button class="slider-btn slider-next" id="slider-next" aria-label="Następne zdjęcie">&#8250;</button>
+      </div>
+
+      <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Wybierz slajd"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal reveal-delay-1" style="text-align:center; margin-top:3rem; padding-top:2.5rem; border-top:1px solid var(--color-border);">
+      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:var(--color-muted); margin-bottom:1.5rem;">
+        To tylko wybrane projekty — w galerii znajdziesz wszystkie 15 realizacji z filtrami.
+      </p>
+      <button onclick="openGalleryOverlay()" class="btn-red" style="font-size:0.95rem; padding:1.1rem 3rem;">
+        Zobacz całą galerię &rarr;
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     7. PEŁNA GALERIA — OVERLAY
+═══════════════════════════════════════════ -->
+<div id="gallery-overlay" role="dialog" aria-modal="true" aria-label="Galeria realizacji">
+
+  <div class="go-header">
+    <div class="go-title">GALERIA <span>REALIZACJI</span></div>
+    <button class="go-close" id="go-close-btn" aria-label="Zamknij galerię">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"/></svg>
+      ESC / Zamknij
+    </button>
+  </div>
+
+  <div class="go-body">
+    <div style="max-width:1280px; margin:0 auto;">
+
+    <!-- Filters -->
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-bottom:2.5rem;">
+      <button class="filter-btn active" data-filter="all">Wszystkie</button>
+      <button class="filter-btn" data-filter="kuchnie">Kuchnie</button>
+      <button class="filter-btn" data-filter="szafy">Szafy</button>
+      <button class="filter-btn" data-filter="lazienki">Łazienki</button>
+      <button class="filter-btn" data-filter="salony">Salony</button>
+    </div>
+
+    <!-- Gallery grid -->
+    <div class="gallery-grid" id="gallery-grid">
+
+      <div class="gallery-item reveal" data-category="kuchnie">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/22ac0617-0010-48d2-b749-f249811d9239.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/22ac0617-0010-48d2-b749-f249811d9239.jpg" alt="Kuchnia na wymiar" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-1" data-category="kuchnie">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/89eaa816-15a3-490a-9663-1d35748c7901.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/89eaa816-15a3-490a-9663-1d35748c7901.jpg" alt="Kuchnia nowoczesna" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-2" data-category="szafy">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/f7dac8b3-7b23-45e5-83ca-1648261ffdbc.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/f7dac8b3-7b23-45e5-83ca-1648261ffdbc.jpg" alt="Szafa na wymiar" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-3" data-category="kuchnie">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/c12ac462-9966-4e12-83a1-bb2fd55b3baf.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/c12ac462-9966-4e12-83a1-bb2fd55b3baf.jpg" alt="Kuchnia klasyczna" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="szafy">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/386d09c9-b928-460b-a88c-ddf0b48dc765.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/386d09c9-b928-460b-a88c-ddf0b48dc765.jpg" alt="Garderoba na wymiar" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-1" data-category="lazienki">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/9c61ce4f-658b-4d90-8d73-fd8dad46e0cd.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/9c61ce4f-658b-4d90-8d73-fd8dad46e0cd.jpg" alt="Meble łazienkowe" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-2" data-category="kuchnie">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/32b4e637-b517-452d-9522-6d607acd874a.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/32b4e637-b517-452d-9522-6d607acd874a.jpg" alt="Kuchnia z wyspą" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-3" data-category="szafy">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/5923144c-331c-4a9f-9e52-13dc347a49b6.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/5923144c-331c-4a9f-9e52-13dc347a49b6.jpg" alt="Szafa wnękowa" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="kuchnie">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/ee3deab5-9cf4-4d5a-9aac-35b46c7ca2e7.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/ee3deab5-9cf4-4d5a-9aac-35b46c7ca2e7.jpg" alt="Kuchnia otwarta" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-1" data-category="salony">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/bc72e5d9-aed3-442a-8e94-7e4d6452280e.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/bc72e5d9-aed3-442a-8e94-7e4d6452280e.jpg" alt="Meble pokojowe" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-2" data-category="kuchnie">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/38029a1f-78a6-44f2-9c99-258c4fb94b04.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/38029a1f-78a6-44f2-9c99-258c4fb94b04.jpg" alt="Kuchnia premium" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-3" data-category="lazienki">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/5ab02d08-81f4-402b-9325-038a58ca7dbd.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/5ab02d08-81f4-402b-9325-038a58ca7dbd.jpg" alt="Szafka łazienkowa" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="szafy">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/36f3119a-ad71-4361-b8b0-b4869c128c6c.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/36f3119a-ad71-4361-b8b0-b4869c128c6c.jpg" alt="Garderoba walk-in" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-1" data-category="kuchnie">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/ebfd85fe-71ad-4ccf-9b30-2c64acbe6532.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/ebfd85fe-71ad-4ccf-9b30-2c64acbe6532.jpg" alt="Kuchnia z frontem lakierowanym" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-2" data-category="salony">
+        <div class="gallery-thumb" data-src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/3c661e8b-fc0d-465d-a1f7-e2eb03ba2e4a.jpg">
+          <img src="https://us-ms.gr-cdn.com/getresponse-IqzZc/photos/3c661e8b-fc0d-465d-a1f7-e2eb03ba2e4a.jpg" alt="Regał i zabudowa salonu" loading="lazy" />
+          <div class="gallery-thumb-overlay"><div class="gallery-plus">+</div></div>
+        </div>
+      </div>
+
+    </div>
+    </div><!-- /.go-body inner -->
+  </div><!-- /.go-body -->
+</div><!-- /#gallery-overlay -->
+
+
+<div class="red-line"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     8. PROCES REALIZACJI
+═══════════════════════════════════════════ -->
+<section id="proces" class="section-pad grain" style="position:relative;">
+  <div class="container-xl">
+
+    <div style="text-align:center; margin-bottom:4rem;">
+      <span class="eyebrow reveal">Przejrzyście i bez niespodzianek</span>
+      <h2 class="section-h2 section-h2-light reveal reveal-delay-1">JAK DZIAŁAMY</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr; gap:3rem; position:relative;" id="process-grid">
+
+      <!-- Step 1 -->
+      <div class="process-step reveal">
+        <div class="step-bg-number">1</div>
+        <svg class="step-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="22" cy="16" r="7"/>
+          <path d="M8 38c0-7.732 6.268-14 14-14s14 6.268 14 14"/>
+        </svg>
+        <div class="step-num-label">Krok 01</div>
+        <div class="step-title">Poznanie potrzeb</div>
+        <p class="step-desc">Pierwsze spotkanie u Ciebie w domu lub w naszej siedzibie w Spytkowicach. Pokazujemy dostępne materiały, kolory i rozwiązania. Odpowiadamy na wszystkie pytania bez zobowiązań.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-bg-number">2</div>
+        <svg class="step-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="6" y="6" width="32" height="32" rx="1"/>
+          <path d="M6 14h32M14 6v8M30 6v8"/>
+          <path d="M12 22h10M12 28h6"/>
+        </svg>
+        <div class="step-num-label">Krok 02</div>
+        <div class="step-title">Pomiary i projekt</div>
+        <p class="step-desc">Wykonujemy dokładne pomiary osobiście. Tworzymy szkic i wstępny projekt z wizualizacją — z dwoma wariantami cenowymi do wyboru. Czas realizacji: <strong style="color:rgba(255,255,255,0.85);">1–2 tygodnie.</strong></p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-bg-number">3</div>
+        <svg class="step-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 36l4-4 6 2 6-8 6 4 6-10"/>
+          <rect x="6" y="6" width="32" height="32" rx="1"/>
+        </svg>
+        <div class="step-num-label">Krok 03</div>
+        <div class="step-title">Produkcja</div>
+        <p class="step-desc">Po akceptacji projektu i wpłacie zaliczki (50%) przystępujemy do produkcji. Jesteśmy w stałym kontakcie. Czas realizacji: <strong style="color:rgba(255,255,255,0.85);">4–8 tygodni.</strong></p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-bg-number">4</div>
+        <svg class="step-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 22l10 10 18-18"/>
+          <circle cx="22" cy="22" r="18"/>
+        </svg>
+        <div class="step-num-label">Krok 04</div>
+        <div class="step-title">Montaż i odbiór</div>
+        <p class="step-desc">Nasza ekipa montuje meble na miejscu. Płatność pozostałych 50% następuje w dniu montażu — w gotówce lub przelewem. Płacisz dopiero gdy meble są gotowe.</p>
+      </div>
+
+    </div>
+
+    <!-- Payment note -->
+    <div class="reveal" style="margin-top:4rem; padding:2rem 2.5rem; border:1px solid rgba(204,28,28,0.3); background:rgba(204,28,28,0.07); display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.5rem;">
+      <div>
+        <div style="font-family:'Bebas Neue',cursive; font-size:1.4rem; letter-spacing:0.04em; color:#fff; margin-bottom:0.4rem;">PŁATNOŚĆ W DNIU MONTAŻU</div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.88rem; color:rgba(255,255,255,0.55); line-height:1.6;">
+          50% zaliczki na start produkcji — pozostałe 50% dopiero gdy meble wiszą. Gotówka lub przelew.
+        </p>
+      </div>
+      <a href="tel:+48605744711" class="btn-red" style="white-space:nowrap;">
+        +48 605 744 711
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (min-width: 1024px) {
+    #process-grid { grid-template-columns: repeat(4, 1fr) !important; gap:0 !important; }
+    #process-grid .process-step { padding: 0 1.5rem; border-right: 1px solid rgba(255,255,255,0.07); }
+    #process-grid .process-step:last-child { border-right: none; }
+  }
+</style>
+
+
+<div class="red-line"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     9. OD CZEGO ZALEŻY CENA
+═══════════════════════════════════════════ -->
+<section id="od-czego" class="section-pad" style="background:#fafafa; color:#1a1a1a;">
+  <div class="container-xl">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <h2 class="section-h2 reveal" style="color:#111;">OD CZEGO ZALEŻY CENA MEBLI NA WYMIAR?</h2>
+    </div>
+
+    <!-- 6 Kart w Gridzie -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; max-width:1200px; margin:0 auto;" class="reveal reveal-delay-1">
+      
+      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Indywidualny projekt</h3>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
+          Każde meble powstają od podstaw — wycena obejmuje pomiary, projekt i wizualizację.
+        </p>
+      </div>
+
+      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Wielkość przestrzeni</h3>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
+          Podstawowa miara to metr bieżący zabudowy. Im więcej mb, tym więcej materiału i pracy.
+        </p>
+      </div>
+
+      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Wybór materiałów</h3>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
+          Od laminatów po ekskluzywne drewno i kamień naturalny — materiał ma największy wpływ na cenę.
+        </p>
+      </div>
+
+      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Okucia i akcesoria</h3>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
+          Systemy cichego domykania, organizery, prowadnice — jakość okuć to jakość codziennego użytkowania.
+        </p>
+      </div>
+
+      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Stopień skomplikowania</h3>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
+          Nietypowe kształty i niestandardowe rozwiązania wymagają więcej czasu i precyzji.
+        </p>
+      </div>
+
+      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Montaż i dojazd</h3>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
+          Cena obejmuje produkcję, dojazd do klienta oraz profesjonalny montaż na miejscu.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Cytat -->
+    <div class="reveal reveal-delay-2" style="background:#111; padding:3rem; margin:4rem auto 0; max-width:900px; border-left:4px solid var(--color-accent);">
+      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.4rem; line-height:1.6; color:#fff; margin:0 0 1.5rem 0;">
+        "Tanich mebli nie robimy — ale gdy inni mówią że się nie da, my znajdziemy rozwiązanie. Jakość premium to nie wydatek, to inwestycja która zostaje na lata."
+      </p>
+      <div style="font-family:'DM Sans',sans-serif; font-size:0.95rem; color:rgba(255,255,255,0.7); font-weight:500;">
+        — Józef Ziobro, założyciel Planeta Mebli
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEPARATOR ZDJĘCIE PARALLAX -->
+<div style="width:100%; height:400px; position:relative; background-image:url('auta_zdjęcie.jpg'); background-size:cover; background-position:center; background-attachment:fixed;">
+  <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7)); display:flex; align-items:center; justify-content:center; padding:2rem;">
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem, 5vw, 4rem); color:#fff; text-align:center; letter-spacing:0.06em; max-width:800px; line-height:1.1; margin:0; text-shadow:0 4px 20px rgba(0,0,0,0.4);">
+      KAŻDY PROJEKT JEST INNY. KAŻDY ZASŁUGUJE NA NAJLEPSZE WYKONANIE.
+    </h2>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     9B. KALKULATOR WYCENY
+═══════════════════════════════════════════ -->
+<section id="kalkulator" class="section-pad">
+  <div class="container-xl">
+
+    <div style="text-align:center; margin-bottom:2rem;">
+      <h2 class="section-h2 section-h2-dark reveal">ORIENTACYJNA<br/>WYCENA</h2>
+      <p class="reveal reveal-delay-1" style="font-family:'DM Sans',sans-serif; font-size:1rem; color:var(--color-muted); max-width:520px; margin:1rem auto 1.5rem; line-height:1.7;">
+        Podaj podstawowe parametry — zobaczysz przybliżony koszt. Dokładna wycena po bezpłatnych pomiarach.
+      </p>
+      <button id="btn-show-calc" onclick="document.getElementById('calc-wrapper').style.display='grid'; this.style.display='none'; setTimeout(()=> {document.getElementById('calc-wrapper').style.opacity='1'; document.getElementById('calc-wrapper').style.transform='translateY(0)'}, 50);" class="btn-red reveal reveal-delay-2" style="font-size:1rem; padding:1.25rem 2.5rem; margin-top:1rem;">
+        Pokaż kalkulator
+      </button>
+    </div>
+
+    <!-- Hidden Calculator Body -->
+    <div id="calc-wrapper" style="display:none; transition:opacity 0.6s ease, transform 0.6s ease; grid-template-columns:1fr; gap:2.5rem; max-width:900px; margin:0 auto; opacity:0; transform:translateY(20px);">
+
+      <!-- Steps -->
+      <div style="display:grid; grid-template-columns:1fr; gap:2rem;">
+
+        <!-- Step 1 -->
+        <div>
+          <div class="calc-step-label">Krok 1</div>
+          <div class="calc-step-title">Rodzaj mebla</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;" id="type-options">
+            <label class="radio-option selected" style="display:flex; align-items:center; gap:0.6rem;">
+              <input type="radio" name="furniture-type" value="kuchnia" checked onchange="updateCalculator()" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7h-6M10 7H4M14 7v10M10 7v10M3 17h18M21 7v10c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2z"></path></svg>
+              <span>Kuchnia</span>
+            </label>
+            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
+              <input type="radio" name="furniture-type" value="szafa" onchange="updateCalculator()" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4zM4 12h16M12 4v16M12 12H8M16 12h-4"></path></svg>
+              <span>Szafa / Garderoba</span>
+            </label>
+            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
+              <input type="radio" name="furniture-type" value="lazienka" onchange="updateCalculator()" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 10h18M5 10v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9M8 6h8M12 10V6M10 3a2 2 0 0 1 4 0"></path></svg>
+              <span>Meble łazienkowe</span>
+            </label>
+            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
+              <input type="radio" name="furniture-type" value="inne" onchange="updateCalculator()" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              <span>Inne meble</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div>
+          <div class="calc-step-label">Krok 2</div>
+          <div class="calc-step-title">Długość zabudowy: <span id="length-value" style="color:var(--color-accent);">3 mb</span></div>
+          <input type="range" min="1" max="15" value="3" step="0.5" class="calc-slider" id="length-slider" style="margin-top:0.5rem;" oninput="updateCalculator()" />
+          <div style="display:flex; justify-content:space-between; margin-top:0.4rem;">
+            <span style="font-size:0.75rem; color:var(--color-muted);">1 mb</span>
+            <span style="font-size:0.75rem; color:var(--color-muted);">15 mb</span>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div>
+          <div class="calc-step-label">Krok 3</div>
+          <div class="calc-step-title">Wybór materiału</div>
+          <div style="display:grid; grid-template-columns:1fr; gap:0.6rem;" id="material-options">
+            <label class="radio-option selected">
+              <input type="radio" name="material" value="standard" checked onchange="updateCalculator()" />
+              <span>Standard (laminat)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="material" value="premium" onchange="updateCalculator()" />
+              <span>Premium (wys. połysk / lakier)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="material" value="ekskluzywny" onchange="updateCalculator()" />
+              <span>Ekskluzywny (drewno/kamień)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div>
+          <div class="calc-step-label">Krok 4</div>
+          <div class="calc-step-title">Miejscowość montażu</div>
+          <div style="display:grid; grid-template-columns:1fr; gap:0.6rem;" id="location-options">
+            <label class="radio-option selected" style="display:flex; align-items:center; gap:0.6rem;">
+              <input type="radio" name="location" value="lokalne" checked onchange="updateCalculator()" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Lokalnie — do 20 km (w cenie)</span>
+            </label>
+            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
+              <input type="radio" name="location" value="srednie" onchange="updateCalculator()" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span>W promieniu 50 km (+5%)</span>
+            </label>
+            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
+              <input type="radio" name="location" value="dalekie" onchange="updateCalculator()" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Powyżej 50 km (+10%)</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Result -->
+      <div class="price-result">
+        <div class="price-label" style="margin-bottom:0.25rem;">Orientacyjna wycena</div>
+        <div class="price-range" id="price-output" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem, 6vw, 4.5rem); color:var(--color-accent); line-height:1; min-height:1.2em; display:flex; align-items:center; margin-top:0.5rem;">
+          9 000 – 13 500 zł
+        </div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.85rem; line-height:1.5; color:rgba(255,255,255,0.55); margin:1.5rem 0;">
+          * Cena orientacyjna za <span id="price-mb">3 mb</span>. Dokładna wycena po bezpłatnych pomiarach u Ciebie.
+        </p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+          <a href="#formularz" class="btn-red" style="display:inline-block; font-size:0.95rem; padding:1.15rem 2.2rem;">Umów bezpłatny pomiar</a>
+          <button onclick="document.getElementById('calc-wrapper').style.opacity='0'; document.getElementById('calc-wrapper').style.transform='translateY(20px)'; setTimeout(()=> {document.getElementById('calc-wrapper').style.display='none'; document.getElementById('btn-show-calc').style.display='inline-block';}, 600);" class="btn-outline" style="font-size:0.95rem; padding:1.15rem 1.4rem; display:inline-flex; align-items:center; gap:0.5rem; justify-content:center; background:rgba(255,255,255,0.05); color:#fff; cursor:pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg> Zwiń
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 767px) {
+    #od-czego .container-xl > div:nth-child(2) {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  @media (min-width: 768px) {
+    #type-options { grid-template-columns: repeat(2, 1fr) !important; }
+    #material-options { grid-template-columns: repeat(3, 1fr) !important; }
+  }
+  @media (min-width: 900px) {
+    #calc-wrapper { grid-template-columns: 1.15fr 0.85fr !important; }
+  }
+</style>
+
+<div class="red-line"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     OPINIE KLIENTÓW
+═══════════════════════════════════════════ -->
+<section id="opinie" class="section-pad grain" style="position:relative;">
+  <div class="container-xl">
+
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <span class="eyebrow reveal">Zaufali nam</span>
+      <h2 class="section-h2 section-h2-light reveal reveal-delay-1">CO MÓWIĄ<br/>NASI KLIENCI</h2>
+    </div>
+
+    <!-- Carousel wrapper -->
+    <div style="position:relative; padding:0 1.5rem;" class="reveal">
+      <div id="reviews-track-wrap" style="overflow:hidden;">
+        <div id="reviews-track" style="display:flex; transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);">
+
+          <!-- Opinia 1 -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Super wykonanie! Funkcjonalna, duża szafa&#8230; wykorzystany każdy centymetr przestrzeni. Dużo miejsca na ubrania i nie tylko. Polecam :)&#8221;</p>
+              <div class="review-tags">
+                <span class="review-tag">Punktualność</span>
+                <span class="review-tag">Jakość</span>
+                <span class="review-tag">Profesjonalizm</span>
+                <span class="review-tag">Cena/jakość</span>
+              </div>
+              <div class="review-author">
+                <div class="review-avatar">J</div>
+                <div>
+                  <div class="review-name">Joanna Domagała</div>
+                  <div class="review-source">Opinia Google ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinia 2 -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Bardzo dobry stolarz. Robił mi i nadal robi wszystkie meble do pensjonatu. Dobra jakość usług, terminowy, krótkie terminy realizacji. Dobra cena do jakości. Przesympatyczny właściciel i bardzo profesjonalni pracownicy. Polecam.&#8221;</p>
+              <div class="review-author">
+                <div class="review-avatar">Ł</div>
+                <div>
+                  <div class="review-name">Łukasz Szelągowski</div>
+                  <div class="review-source">Opinia Google ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinia 3 -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Mam wyłącznie pozytywne doświadczenia z firmą Ziobro. Kompetentne i profesjonalne doradztwo oraz doskonała jakość. Meble na wymiar w bardzo dobrym stosunku ceny do jakości. Prawie wszystko zamówiłem u nich i na pewno będę u nich kupował ponownie. Gorąco polecam.&#8221;</p>
+              <div class="review-author">
+                <div class="review-avatar">C</div>
+                <div>
+                  <div class="review-name">Chris Wiecek</div>
+                  <div class="review-source">Opinia Google ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinia 4 -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Super jakość, pięknie wykonane, po prostu super 👍👍👍&#8221;</p>
+              <div class="review-author">
+                <div class="review-avatar">Z</div>
+                <div>
+                  <div class="review-name">Zmac</div>
+                  <div class="review-source">Opinia Google ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinia 5 -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Polecam serdecznie&#8221;</p>
+              <div class="review-author">
+                <div class="review-avatar">B</div>
+                <div>
+                  <div class="review-name">beti 555</div>
+                  <div class="review-source">Opinia Google ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinia 6 -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Polecam!&#8221;</p>
+              <div class="review-author">
+                <div class="review-avatar">A</div>
+                <div>
+                  <div class="review-name">Artur Żegleń</div>
+                  <div class="review-source">Opinia Google ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /#reviews-track -->
+      </div>
+
+      <button class="reviews-nav-btn reviews-prev" id="reviews-prev" aria-label="Poprzednia opinia">&#8249;</button>
+      <button class="reviews-nav-btn reviews-next" id="reviews-next" aria-label="Następna opinia">&#8250;</button>
+    </div>
+
+    <!-- Dots -->
+    <div id="reviews-dots" style="display:flex; justify-content:center; gap:8px; margin-top:1.75rem;" aria-label="Wybierz opinię"></div>
+
+    <!-- CTA links -->
+    <div class="reveal reveal-delay-2" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:2.75rem;">
+      <a href="https://www.google.com/maps/place/Meble+na+zam%C3%B3wienie+-+PLANETAMEBLI+J%C3%B3zef+Ziobro/@49.5753294,19.8447359,17z/data=!4m8!3m7!1s0x4715def7a3983325:0x7cfe256a64d97d85" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size:0.82rem; padding:0.85rem 1.75rem;">
+        Zobacz wszystkie opinie na Google
+      </a>
+      <a href="#formularz" class="btn-red" style="font-size:0.82rem; padding:0.85rem 1.75rem;">
+        Skontaktuj się z nami
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="red-line"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     10. FORMULARZ WYCENY
+═══════════════════════════════════════════ -->
+<section id="formularz" class="section-pad">
+  <div class="container-xl">
+    <div style="display:grid; grid-template-columns:1fr; gap:4rem; align-items:start;">
+
+      <!-- Form -->
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--color-accent);">Bezpłatna konsultacja</span>
+        <h2 class="section-h2 section-h2-dark" style="margin-bottom:0.5rem;">UMÓW<br/>BEZPŁATNY POMIAR</h2>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; color:var(--color-muted); line-height:1.7; margin-bottom:2.5rem;">
+          Wypełnij formularz, oddzwonimy w ciągu 24h.
+        </p>
+
+        <form action="mailto:ziobro@planetamebli.eu" method="POST" enctype="text/plain" style="display:flex; flex-direction:column; gap:1.25rem;">
+
+          <div style="display:grid; grid-template-columns:1fr; gap:1.25rem;" class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="f-name">Imię i nazwisko *</label>
+              <input type="text" id="f-name" name="Imię i nazwisko" class="form-input" placeholder="Jan Kowalski" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-phone">Numer telefonu *</label>
+              <input type="tel" id="f-phone" name="Telefon" class="form-input" placeholder="+48 600 000 000" required />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr; gap:1.25rem;" class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="f-type">Rodzaj mebli</label>
+              <select id="f-type" name="Rodzaj mebli" class="form-select">
+                <option value="">Wybierz...</option>
+                <option>Kuchnia na wymiar</option>
+                <option>Szafa / garderoba</option>
+                <option>Meble łazienkowe</option>
+                <option>Meble pokojowe</option>
+                <option>Inne / kilka rodzajów</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-city">Miasto / miejscowość</label>
+              <input type="text" id="f-city" name="Miasto" class="form-input" placeholder="np. Kraków" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-msg">Wiadomość</label>
+            <textarea id="f-msg" name="Wiadomość" class="form-textarea" placeholder="Opisz czego szukasz — rozmiar pomieszczenia, styl, termin..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-red" style="width:100%; text-align:center; padding:1.1rem; font-size:1rem;">
+            Wyślij zapytanie →
+          </button>
+
+          <p style="font-family:'DM Sans',sans-serif; font-size:0.75rem; color:var(--color-muted); text-align:center;">
+            Twoje dane są bezpieczne. Kontaktujemy się tylko w sprawie zapytania.
+          </p>
+        </form>
+      </div>
+
+      <!-- Contact info -->
+      <div class="reveal reveal-delay-2" style="display:flex; flex-direction:column; gap:2.5rem;">
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--color-text); margin-bottom:1.5rem;">
+            Wolisz zadzwonić? Chętnie odbierzemy.
+          </div>
+          <div style="display:flex; flex-direction:column; gap:1.25rem;">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127 1.001.38 1.983.76 2.92a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.937.38 1.919.633 2.92.76A2 2 0 0122 14.92z"/>
+                </svg>
+              </div>
+              <div class="contact-text">
+                <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-muted); font-weight:500; margin-bottom:2px;">Telefon</div>
+                <a href="tel:+48605744711" style="font-size:1.15rem; font-weight:600;">+48 605 744 711</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="contact-text">
+                <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-muted); font-weight:500; margin-bottom:2px;">E-mail</div>
+                <a href="mailto:ziobro@planetamebli.eu">ziobro@planetamebli.eu</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="contact-text">
+                <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-muted); font-weight:500; margin-bottom:2px;">Siedziba</div>
+                <span style="font-size:1rem; font-weight:500; color:var(--color-text);">Spytkowice, woj. małopolskie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social media block -->
+        <div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-muted); margin-bottom:1rem;">Obserwuj nas</div>
+          <div style="display:flex; gap:0.75rem;">
+            <a href="https://www.facebook.com/planetamebli" target="_blank" rel="noopener noreferrer" class="social-btn" style="color:var(--color-text); border-color:var(--color-border);" aria-label="Facebook Planeta Mebli">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/planetamebli_ziobro/" target="_blank" rel="noopener noreferrer" class="social-btn" style="color:var(--color-text); border-color:var(--color-border);" aria-label="Instagram Planeta Mebli">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@planetamebli" target="_blank" rel="noopener noreferrer" class="social-btn" style="color:var(--color-text); border-color:var(--color-border);" aria-label="TikTok Planeta Mebli">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52V6.78a4.85 4.85 0 01-1-.09z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Note about email -->
+        <div style="padding:1.25rem 1.5rem; border:1px solid var(--color-border); background:#fff;">
+          <p style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:var(--color-muted); line-height:1.7;">
+            <strong style="color:var(--color-text);">Uwaga:</strong> Na maile odpowiadamy po wcześniejszym kontakcie telefonicznym. Zadzwoń, żeby umówić termin pomiaru.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Google Maps Embed -->
+    <div class="reveal reveal-delay-3" style="margin-top: 4rem; width: 100%; height: 450px; border: 1px solid var(--color-border);">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2587.1886990576686!2d19.8447359!3d49.5753294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715def7a3983325%3A0x7cfe256a64d97d85!2sMeble%20na%20zam%C3%B3wienie%20-%20PLANETAMEBLI%20J%C3%B3zef%20Ziobro!5e0!3m2!1spl!2spl!4v1775069224017!5m2!1spl!2spl" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 768px) {
+    .form-row-2 { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (min-width: 1024px) {
+    #formularz .container-xl > div { grid-template-columns: 1.2fr 0.8fr !important; }
+  }
+</style>
+
+
+<!-- ═══════════════════════════════════════════
+     11. FOOTER
+═══════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container-xl">
+    <div style="padding:3.5rem 0 2rem; display:grid; grid-template-columns:1fr; gap:3rem;">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-logo" style="margin-bottom:0.75rem; display:flex; align-items:center;">
+          <img src="planeta ziobro logo.png" alt="Planeta Mebli" style="max-height: 48px; width: auto;" />
+        </div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.4); line-height:1.7; max-width:320px;">
+          Meble na wymiar. Kraków, Podhale, Śląsk.<br/>Działamy od 2004 roku.
+        </p>
+        <div style="display:flex; gap:0.6rem; margin-top:1.25rem;">
+          <a href="https://www.facebook.com/planetamebli" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/planetamebli_ziobro/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@planetamebli" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52V6.78a4.85 4.85 0 01-1-.09z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:1rem;">Nawigacja</div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          <a href="#uslugi" class="footer-link">Usługi</a>
+          <a href="#realizacje" class="footer-link">Realizacje</a>
+          <a href="#kalkulator" class="footer-link">Wycena</a>
+          <a href="#proces" class="footer-link">Jak działamy</a>
+          <a href="#formularz" class="footer-link">Kontakt</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:1rem;">Kontakt</div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          <a href="tel:+48605744711" style="text-decoration:none; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:500; color:rgba(255,255,255,0.75); transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">+48 605 744 711</a>
+          <a href="mailto:ziobro@planetamebli.eu" style="text-decoration:none; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:rgba(255,255,255,0.45); transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">ziobro@planetamebli.eu</a>
+          <span style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.35);">Spytkowice, woj. małopolskie</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid rgba(255,255,255,0.07); padding:1.5rem 0; display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center; justify-content:space-between;">
+      <p style="font-family:'DM Sans',sans-serif; font-size:0.78rem; color:rgba(255,255,255,0.3);">
+        &copy; <span id="footer-year">2026</span> Planeta Mebli &mdash; Józef Ziobro. Spytkowice.
+      </p>
+      <p style="font-family:'DM Sans',sans-serif; font-size:0.72rem; color:rgba(255,255,255,0.2);">
+        Strona wykonana przez FilarAI
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @media (min-width: 768px) {
+    #footer .container-xl > div:first-child { grid-template-columns: 2fr 1fr 1fr !important; }
+  }
+</style>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Navbar scroll behavior ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── Mobile menu toggle ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', function() {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Intersection Observer for reveal animations ──
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+  // ── Count-up animation for stats ──
+  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+  function animateCountUp(el) {
+    const target = parseInt(el.getAttribute('data-count-up'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 2000;
+    const start = performance.now();
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      el.textContent = Math.round(easeOutQuart(progress) * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('[data-count-up]').forEach(animateCountUp);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  const statsSection = document.getElementById('stats');
+  if (statsSection) statsObserver.observe(statsSection);
+
+  // ── Gallery filter ──
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('#gallery-grid .gallery-item');
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const filter = btn.getAttribute('data-filter');
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      galleryItems.forEach(function(item) {
+        const cat = item.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          item.classList.remove('hidden-item');
+        } else {
+          item.classList.add('hidden-item');
+        }
+      });
+    });
+  });
+
+  // ── Lightbox ──
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbClose = document.getElementById('lb-close');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+  let galleryImages = [];
+  let currentLbIndex = 0;
+
+  function buildGalleryImageList() {
+    galleryImages = [];
+    document.querySelectorAll('#gallery-grid .gallery-thumb[data-src]').forEach(function(thumb) {
+      galleryImages.push({
+        src: thumb.getAttribute('data-src'),
+        alt: thumb.querySelector('img') ? thumb.querySelector('img').getAttribute('alt') : ''
+      });
+    });
+  }
+  buildGalleryImageList();
+
+  function openLightbox(index) {
+    currentLbIndex = index;
+    lbImg.src = galleryImages[index].src;
+    lbImg.alt = galleryImages[index].alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = galleryOverlay.classList.contains('open') ? 'hidden' : '';
+    lbImg.src = '';
+  }
+  function prevLb() {
+    currentLbIndex = (currentLbIndex - 1 + galleryImages.length) % galleryImages.length;
+    lbImg.src = galleryImages[currentLbIndex].src;
+    lbImg.alt = galleryImages[currentLbIndex].alt;
+  }
+  function nextLb() {
+    currentLbIndex = (currentLbIndex + 1) % galleryImages.length;
+    lbImg.src = galleryImages[currentLbIndex].src;
+    lbImg.alt = galleryImages[currentLbIndex].alt;
+  }
+
+  document.querySelectorAll('#gallery-grid .gallery-thumb').forEach(function(thumb, idx) {
+    thumb.addEventListener('click', function() { openLightbox(idx); });
+  });
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', function(e) { e.stopPropagation(); prevLb(); });
+  lbNext.addEventListener('click', function(e) { e.stopPropagation(); nextLb(); });
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+
+  // ── Gallery overlay ──
+  var galleryOverlay = document.getElementById('gallery-overlay');
+  var goCloseBtn = document.getElementById('go-close-btn');
+
+  window.openGalleryOverlay = function() {
+    galleryOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeGalleryOverlay = function() {
+    galleryOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    // return scroll to realizacje
+    setTimeout(function() {
+      document.getElementById('realizacje').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+  if (goCloseBtn) goCloseBtn.addEventListener('click', closeGalleryOverlay);
+
+  // ── Keyboard handler ──
+  document.addEventListener('keydown', function(e) {
+    if (lightbox.classList.contains('open')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevLb();
+      if (e.key === 'ArrowRight') nextLb();
+      return;
+    }
+    if (galleryOverlay.classList.contains('open')) {
+      if (e.key === 'Escape') closeGalleryOverlay();
+    }
+  });
+
+  // ── Slider ──
+  var sliderTrack = document.getElementById('slider-track');
+  var sliderDotsContainer = document.getElementById('slider-dots');
+  var slides = sliderTrack ? Array.from(sliderTrack.querySelectorAll('.slide')) : [];
+  var currentSlide = 0;
+  var sliderAutoplay = null;
+  var sliderTouchStartX = 0;
+
+  function buildDots() {
+    if (!sliderDotsContainer) return;
+    sliderDotsContainer.innerHTML = '';
+    slides.forEach(function(_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Slajd ' + (i + 1));
+      dot.addEventListener('click', function() { goToSlide(i); resetAutoplay(); });
+      sliderDotsContainer.appendChild(dot);
+    });
+  }
+
+  function updateDots() {
+    if (!sliderDotsContainer) return;
+    Array.from(sliderDotsContainer.children).forEach(function(dot, i) {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function goToSlide(n) {
+    currentSlide = (n + slides.length) % slides.length;
+    sliderTrack.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    updateDots();
+  }
+
+  function resetAutoplay() {
+    if (sliderAutoplay) clearInterval(sliderAutoplay);
+    sliderAutoplay = setInterval(function() { goToSlide(currentSlide + 1); }, 4500);
+  }
+
+  if (slides.length > 0 && sliderTrack) {
+    buildDots();
+
+    var prevBtn = document.getElementById('slider-prev');
+    var nextBtn = document.getElementById('slider-next');
+    if (prevBtn) prevBtn.addEventListener('click', function() { goToSlide(currentSlide - 1); resetAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { goToSlide(currentSlide + 1); resetAutoplay(); });
+
+    // Click on slide → open lightbox with matching image
+    slides.forEach(function(slide) {
+      slide.addEventListener('click', function() {
+        var src = slide.getAttribute('data-slide-src');
+        var idx = galleryImages.findIndex(function(img) { return img.src === src; });
+        if (idx >= 0) {
+          openLightbox(idx);
+        } else {
+          lbImg.src = src;
+          lbImg.alt = slide.getAttribute('data-slide-alt') || '';
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Touch/swipe support
+    var sliderWrap = document.getElementById('main-slider-wrap');
+    if (sliderWrap) {
+      sliderWrap.addEventListener('touchstart', function(e) {
+        sliderTouchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      sliderWrap.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - sliderTouchStartX;
+        if (Math.abs(dx) > 40) {
+          goToSlide(dx < 0 ? currentSlide + 1 : currentSlide - 1);
+          resetAutoplay();
+        }
+      }, { passive: true });
+    }
+
+    resetAutoplay();
+  }
+
+  // ── Hero crossfade slider ──
+  (function() {
+    var heroSlides = document.querySelectorAll('.hero-slide');
+    var heroDots = document.querySelectorAll('.hero-indicator-dot');
+    var heroCurrent = 0;
+    var heroTimer = null;
+
+    function goToHeroSlide(n) {
+      heroSlides[heroCurrent].classList.remove('active');
+      heroDots[heroCurrent].classList.remove('active');
+      heroCurrent = (n + heroSlides.length) % heroSlides.length;
+      heroSlides[heroCurrent].classList.add('active');
+      heroDots[heroCurrent].classList.add('active');
+    }
+
+    function startHeroAutoplay() {
+      heroTimer = setInterval(function() { goToHeroSlide(heroCurrent + 1); }, 5000);
+    }
+
+    if (heroSlides.length > 0) {
+      heroDots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+          clearInterval(heroTimer);
+          goToHeroSlide(i);
+          startHeroAutoplay();
+        });
+      });
+      startHeroAutoplay();
+    }
+  })();
+
+  // ── Reviews carousel ──
+  (function() {
+    var track = document.getElementById('reviews-track');
+    var dotsContainer = document.getElementById('reviews-dots');
+    if (!track) return;
+
+    var cards = Array.from(track.querySelectorAll('.review-card'));
+    var total = cards.length;
+    var current = 0;
+    var reviewTimer = null;
+
+    function getVisibleCount() {
+      return window.innerWidth >= 768 ? 3 : 1;
+    }
+
+    function getPageCount() {
+      return Math.ceil(total / getVisibleCount());
+    }
+
+    function buildDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      var pages = getPageCount();
+      for (var i = 0; i < pages; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Strona opinii ' + (i + 1));
+        (function(idx) {
+          dot.addEventListener('click', function() {
+            clearInterval(reviewTimer);
+            goToPage(idx);
+            startReviewAutoplay();
+          });
+        })(i);
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      if (!dotsContainer) return;
+      var page = Math.round(current / getVisibleCount());
+      Array.from(dotsContainer.children).forEach(function(dot, i) {
+        dot.classList.toggle('active', i === page);
+      });
+    }
+
+    function goToPage(page) {
+      var visible = getVisibleCount();
+      var maxPage = getPageCount() - 1;
+      page = Math.max(0, Math.min(page, maxPage));
+      current = page * visible;
+      var cardWidth = 100 / visible;
+      track.style.transform = 'translateX(-' + (current * cardWidth) + '%)';
+      // set card widths
+      cards.forEach(function(c) { c.style.flex = '0 0 ' + cardWidth + '%'; });
+      updateDots();
+    }
+
+    function nextPage() {
+      var visible = getVisibleCount();
+      var page = Math.round(current / visible);
+      goToPage((page + 1) % getPageCount());
+    }
+
+    function prevPage() {
+      var visible = getVisibleCount();
+      var page = Math.round(current / visible);
+      goToPage((page - 1 + getPageCount()) % getPageCount());
+    }
+
+    function startReviewAutoplay() {
+      reviewTimer = setInterval(nextPage, 5000);
+    }
+
+    function init() {
+      var visible = getVisibleCount();
+      cards.forEach(function(c) { c.style.flex = '0 0 ' + (100 / visible) + '%'; });
+      buildDots();
+      updateDots();
+    }
+
+    var prevBtn = document.getElementById('reviews-prev');
+    var nextBtn = document.getElementById('reviews-next');
+    if (prevBtn) prevBtn.addEventListener('click', function() { clearInterval(reviewTimer); prevPage(); startReviewAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { clearInterval(reviewTimer); nextPage(); startReviewAutoplay(); });
+
+    window.addEventListener('resize', function() {
+      current = 0;
+      init();
+      goToPage(0);
+    });
+
+    init();
+    startReviewAutoplay();
+  })();
+
+  // ── Price calculator ──
+  const priceRanges = {
+    kuchnia:   { standard: [2000,2800], premium: [3000,4500], ekskluzywny: [5000,7000] },
+    szafa:     { standard: [1500,2200], premium: [2500,3500], ekskluzywny: [4000,5500] },
+    lazienka:  { standard: [1800,2500], premium: [2800,4000], ekskluzywny: [4500,6000] },
+    inne:      { standard: [1500,2500], premium: [2500,4000], ekskluzywny: [4000,6000] }
+  };
+  function formatPrice(n) { return n.toLocaleString('pl-PL') + ' zł'; }
+  function updateCalculator() {
+    const typeEl = document.querySelector('input[name="furniture-type"]:checked');
+    const materialEl = document.querySelector('input[name="material"]:checked');
+    const locationEl = document.querySelector('input[name="location"]:checked');
+    const lengthEl = document.getElementById('length-slider');
+    if (!typeEl || !materialEl || !lengthEl || !locationEl) return;
+    const range = priceRanges[typeEl.value][materialEl.value];
+    const length = parseFloat(lengthEl.value);
+    
+    let locMult = 1.0;
+    if (locationEl.value === 'srednie') locMult = 1.05;
+    if (locationEl.value === 'dalekie') locMult = 1.10;
+    
+    const minTotal = Math.round((range[0] * length * locMult) / 100) * 100;
+    const maxTotal = Math.round((range[1] * length * locMult) / 100) * 100;
+    document.getElementById('price-output').textContent = formatPrice(minTotal) + ' – ' + formatPrice(maxTotal);
+    document.getElementById('price-mb').textContent = length + ' mb';
+    const pct = ((length - 1) / 14) * 100;
+    lengthEl.style.setProperty('--slider-pct', pct + '%');
+    document.getElementById('length-value').textContent = length + ' mb';
+  }
+  function setupRadioGroup(name) {
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.querySelectorAll('input[name="' + name + '"]').forEach(function(r) {
+          r.closest('.radio-option').classList.remove('selected');
+        });
+        radio.closest('.radio-option').classList.add('selected');
+        updateCalculator();
+      });
+    });
+  }
+  setupRadioGroup('furniture-type');
+  setupRadioGroup('material');
+  setupRadioGroup('location');
+  var lengthSlider = document.getElementById('length-slider');
+  if (lengthSlider) lengthSlider.addEventListener('input', updateCalculator);
+  updateCalculator();
+
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════
+     MOBILE STICKY CTA
+═══════════════════════════════════════════ -->
+<div id="mobile-cta-bar">
+  <a href="tel:+48605744711" class="mobile-cta-btn" style="background:var(--color-accent); color:#fff; display:flex; align-items:center; justify-content:center; gap:8px;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    Zadzwoń
+  </a>
+  <a href="mailto:ziobro@planetamebli.eu" class="mobile-cta-btn" style="background:#1A1A1A; color:#fff; border-left:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; gap:8px;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    Napisz
+  </a>
+</div>
+
+</body>
+</html>
