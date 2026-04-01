@@ -247,10 +247,16 @@
       margin-top: 4px;
     }
     .stat-sep {
-      width: 1px;
-      height: 60px;
-      background: var(--color-accent);
-      opacity: 0.5;
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .stat-sep {
+        display: block;
+        width: 1px;
+        height: 60px;
+        background: var(--color-accent);
+        opacity: 0.5;
+      }
     }
 
     /* ── O Firmie (light) ── */
@@ -1090,15 +1096,26 @@
     /* ── Mobile sticky CTA ── */
     #mobile-cta-bar {
       display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.45);
     }
     @media (max-width: 767px) {
-      #mobile-cta-bar { display: flex; }
+      #mobile-cta-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.45);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: translateY(100%);
+        pointer-events: none;
+      }
+      #mobile-cta-bar.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
       body { padding-bottom: 56px; }
     }
     .mobile-cta-btn {
@@ -1280,7 +1297,7 @@
   </div>
 
   <!-- Hero slider dots -->
-  <div class="hero-indicator-dots" id="hero-indicator-dots" aria-label="Wybierz slajd hero">
+  <div class="hero-indicator-dots" id="hero-indicator-dots" aria-label="Wybierz slajd hero" style="display: none !important;">
     <button class="hero-indicator-dot active" aria-label="Slajd 1"></button>
     <button class="hero-indicator-dot" aria-label="Slajd 2"></button>
     <button class="hero-indicator-dot" aria-label="Slajd 3"></button>
@@ -1908,6 +1925,7 @@
             <span style="font-size:0.75rem; color:var(--color-muted);">1 mb</span>
             <span style="font-size:0.75rem; color:var(--color-muted);">15 mb</span>
           </div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:0.5rem;">*mb - metr mebla</div>
         </div>
 
         <!-- Step 3 -->
@@ -2368,8 +2386,20 @@
 
   // ── Navbar scroll behavior ──
   const navbar = document.getElementById('navbar');
+  const mobileCtaBar = document.getElementById('mobile-cta-bar');
+  const heroSection = document.getElementById('hero');
+
   window.addEventListener('scroll', function() {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
+
+    // Toggle mobile sticky CTA
+    if (mobileCtaBar && heroSection) {
+      if (window.scrollY > (heroSection.offsetHeight - 100)) {
+        mobileCtaBar.classList.add('visible');
+      } else {
+        mobileCtaBar.classList.remove('visible');
+      }
+    }
   }, { passive: true });
 
   // ── Mobile menu toggle ──
