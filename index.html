@@ -95,6 +95,18 @@
     #navbar.scrolled {
       box-shadow: 0 4px 32px rgba(0,0,0,0.5);
     }
+    
+    /* ── Scroll Progress Bar ── */
+    #scroll-progress {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 3px;
+      background: var(--color-accent);
+      width: 0%;
+      z-index: 102;
+      transition: width 0.1s ease-out;
+    }
     .nav-link {
       font-family: 'DM Sans', sans-serif;
       font-weight: 500;
@@ -205,6 +217,8 @@
       gap: 8px;
       z-index: 2;
       animation: bounce 2.2s infinite;
+      cursor: pointer;
+      text-decoration: none !important;
     }
     .scroll-indicator span {
       font-family: 'DM Sans', sans-serif;
@@ -601,104 +615,7 @@
     .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
     .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
 
-    /* ── Kalkulator (light) ── */
-    #kalkulator {
-      background: var(--color-bg-light);
-      color: var(--color-text);
-    }
 
-    .calc-step-label {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 0.75rem;
-    }
-    .calc-step-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--color-text);
-      margin-bottom: 1rem;
-    }
-
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1.25rem;
-      border: 2px solid var(--color-border);
-      cursor: pointer;
-      transition: all 0.2s;
-      background: #fff;
-    }
-    .radio-option:hover {
-      border-color: var(--color-accent);
-      background: #fff5f5;
-    }
-    .radio-option.selected {
-      border-color: var(--color-accent);
-      background: #fff5f5;
-    }
-    .radio-option input[type="radio"] { accent-color: var(--color-accent); }
-    .radio-option span {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: var(--color-text);
-    }
-
-    .calc-slider {
-      width: 100%;
-      height: 6px;
-      -webkit-appearance: none;
-      appearance: none;
-      background: linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) var(--slider-pct, 30%), #E0D8CF var(--slider-pct, 30%), #E0D8CF 100%);
-      border-radius: 0;
-      outline: none;
-    }
-    .calc-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px;
-      height: 22px;
-      background: var(--color-accent);
-      cursor: pointer;
-      border: 3px solid #fff;
-      box-shadow: 0 0 0 2px var(--color-accent);
-    }
-    .calc-slider::-moz-range-thumb {
-      width: 22px;
-      height: 22px;
-      background: var(--color-accent);
-      cursor: pointer;
-      border: 3px solid #fff;
-      box-shadow: 0 0 0 2px var(--color-accent);
-    }
-
-    .price-result {
-      background: var(--color-text);
-      color: #fff;
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-    .price-range {
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: var(--color-accent);
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-    }
-    .price-label {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-top: 0.5rem;
-    }
 
     /* ── Proces realizacji (dark) ── */
     #proces {
@@ -712,6 +629,13 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      transition: background 0.3s ease;
+      padding: 1.5rem;
+      border-radius: 4px;
+    }
+    .process-step:hover .step-bg-number {
+      opacity: 0.2;
+      color: #fff;
     }
     .step-bg-number {
       font-family: 'Bebas Neue', cursive;
@@ -724,6 +648,7 @@
       line-height: 1;
       pointer-events: none;
       user-select: none;
+      transition: opacity 0.3s ease;
     }
     .step-icon {
       width: 44px;
@@ -824,6 +749,37 @@
       transition: color 0.2s;
     }
     .contact-text a:hover { color: var(--color-accent); }
+
+    /* ── Price Cards Hover ── */
+    .price-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .price-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .price-card:hover::after {
+      transform: scaleX(1);
+    }
 
     /* ── Footer (dark) ── */
     #footer {
@@ -1178,7 +1134,7 @@
         <a href="#uslugi" class="nav-link">Usługi</a>
         <a href="#realizacje" class="nav-link">Realizacje</a>
         <a href="#proces" class="nav-link">Jak Działamy</a>
-        <a href="#kalkulator" class="nav-link">Wycena</a>
+
         <a href="#opinie" class="nav-link">Opinie</a>
       </div>
 
@@ -1212,7 +1168,7 @@
     <a href="#uslugi" class="mobile-nav-link">Usługi</a>
     <a href="#realizacje" class="mobile-nav-link">Realizacje</a>
     <a href="#proces" class="mobile-nav-link">Jak Działamy</a>
-    <a href="#kalkulator" class="mobile-nav-link">Wycena</a>
+
     <a href="#opinie" class="mobile-nav-link">Opinie</a>
     <div style="padding:1rem 1.5rem; display:flex; justify-content:center; gap:1rem;">
       <a href="mailto:ziobro@planetamebli.eu" class="social-btn" aria-label="Email">
@@ -1230,6 +1186,9 @@
       <a href="#formularz" class="btn-outline" style="display:block; text-align:center; padding:0.85rem 1.5rem; color:#fff;">Umów pomiar</a>
     </div>
   </div>
+  
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
 </nav>
 
 <style>
@@ -1310,10 +1269,10 @@
     <button class="hero-indicator-dot" aria-label="Slajd 5"></button>
   </div>
 
-  <div class="scroll-indicator">
+  <a href="#stats" class="scroll-indicator">
     <span>Przewiń</span>
     <div class="scroll-arrow"></div>
-  </div>
+  </a>
 </section>
 
 
@@ -1370,6 +1329,9 @@
         <div class="highlight-box reveal reveal-delay-2" style="margin-top:2rem;">
           Nie boimy się trudnych i nietypowych projektów — jeśli inni mówią nie, my szukamy rozwiązania. Na jakości premium nie można oszczędzać.
         </div>
+        <div class="reveal reveal-delay-3" style="margin-top:2.5rem; text-align:center;">
+          <a href="#uslugi" class="btn-red" style="padding:1rem 2.5rem; display:inline-block;">Poznaj ofertę</a>
+        </div>
       </div>
 
       <!-- Image column -->
@@ -1411,7 +1373,7 @@
       <h2 class="section-h2 section-h2-light reveal reveal-delay-1">CO ROBIMY</h2>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;">
+    <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;" id="services-grid">
 
       <!-- Card 1 -->
       <div class="service-card reveal">
@@ -1461,15 +1423,25 @@
       </div>
 
     </div>
+
+    <!-- CTA Buttons -->
+    <div class="reveal reveal-delay-4" style="display:flex; flex-wrap:wrap; gap:1.25rem; justify-content:center; margin-top:3.5rem;">
+      <a href="#realizacje" class="btn-outline" style="font-size:0.85rem; padding:1rem 2.5rem; display:inline-flex; align-items:center; justify-content:center;">
+        Zobacz realizacje
+      </a>
+      <a href="#formularz" class="btn-red" style="font-size:0.85rem; padding:1rem 2.5rem;">
+        Umów pomiar
+      </a>
+    </div>
   </div>
 </section>
 
 <style>
   @media (min-width: 640px) {
-    #uslugi .container-xl > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
+    #services-grid { grid-template-columns: repeat(2, 1fr) !important; }
   }
   @media (min-width: 1024px) {
-    #uslugi .container-xl > div:last-child { grid-template-columns: repeat(4, 1fr) !important; }
+    #services-grid { grid-template-columns: repeat(4, 1fr) !important; }
   }
 </style>
 
@@ -1540,14 +1512,18 @@
       <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Wybierz slajd"></div>
     </div>
 
-    <!-- CTA -->
-    <div class="reveal reveal-delay-1" style="text-align:center; margin-top:3rem; padding-top:2.5rem; border-top:1px solid var(--color-border);">
-      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:var(--color-muted); margin-bottom:1.5rem;">
+    <div class="reveal reveal-delay-1" style="text-align:center; margin-top:3rem; padding-top:2.5rem; border-top:1px solid var(--color-border); display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
+      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:var(--color-muted); margin-bottom:0;">
         To tylko wybrane projekty — w galerii znajdziesz wszystkie 15 realizacji z filtrami.
       </p>
-      <button onclick="openGalleryOverlay()" class="btn-red" style="font-size:0.95rem; padding:1.1rem 3rem;">
-        Zobacz całą galerię &rarr;
-      </button>
+      <div style="display:flex; flex-wrap:wrap; gap:1.25rem; justify-content:center;">
+        <button onclick="openGalleryOverlay()" class="btn-red" style="font-size:0.95rem; padding:1.1rem 3rem;">
+          Zobacz całą galerię &rarr;
+        </button>
+        <a href="#proces" class="btn-outline" style="font-size:0.95rem; padding:1.1rem 3rem; display:inline-flex; align-items:center; justify-content:center; color:#000; border-color:#000;">
+          Jak pracujemy?
+        </a>
+      </div>
     </div>
 
   </div>
@@ -1800,7 +1776,7 @@
     <!-- 6 Kart w Gridzie -->
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; max-width:1200px; margin:0 auto;" class="reveal reveal-delay-1">
       
-      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+      <div class="price-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
         <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Indywidualny projekt</h3>
         <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
@@ -1808,7 +1784,7 @@
         </p>
       </div>
 
-      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+      <div class="price-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
         <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Wielkość przestrzeni</h3>
         <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
@@ -1816,7 +1792,7 @@
         </p>
       </div>
 
-      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+      <div class="price-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
         <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Wybór materiałów</h3>
         <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
@@ -1824,7 +1800,7 @@
         </p>
       </div>
 
-      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+      <div class="price-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
         <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Okucia i akcesoria</h3>
         <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
@@ -1832,7 +1808,7 @@
         </p>
       </div>
 
-      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+      <div class="price-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
         <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Stopień skomplikowania</h3>
         <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
@@ -1840,13 +1816,22 @@
         </p>
       </div>
 
-      <div style="background:#fff; padding:2.5rem; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:1rem;">
+      <div class="price-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
         <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.04em; color:#111;">Montaż i dojazd</h3>
         <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; line-height:1.6; color:#555; margin:0;">
           Cena obejmuje produkcję, dojazd do klienta oraz profesjonalny montaż na miejscu.
         </p>
       </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal reveal-delay-2" style="text-align:center; margin-top:4rem;">
+      <a href="#formularz" class="btn-red" style="padding:1.1rem 3.5rem; font-size:1rem; display:inline-block;">
+        Umów pomiar
+      </a>
+    </div>
 
     </div>
 
@@ -1871,150 +1856,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     9B. KALKULATOR WYCENY
-═══════════════════════════════════════════ -->
-<section id="kalkulator" class="section-pad">
-  <div class="container-xl">
 
-    <div style="text-align:center; margin-bottom:2rem;">
-      <h2 class="section-h2 section-h2-dark reveal">ORIENTACYJNA<br/>WYCENA</h2>
-      <p class="reveal reveal-delay-1" style="font-family:'DM Sans',sans-serif; font-size:1rem; color:var(--color-muted); max-width:520px; margin:1rem auto 1.5rem; line-height:1.7;">
-        Podaj podstawowe parametry — zobaczysz przybliżony koszt. Dokładna wycena po bezpłatnych pomiarach.
-      </p>
-      <button id="btn-show-calc" onclick="document.getElementById('calc-wrapper').style.display='grid'; this.style.display='none'; setTimeout(()=> {document.getElementById('calc-wrapper').style.opacity='1'; document.getElementById('calc-wrapper').style.transform='translateY(0)'}, 50);" class="btn-red reveal reveal-delay-2" style="font-size:1rem; padding:1.25rem 2.5rem; margin-top:1rem;">
-        Pokaż kalkulator
-      </button>
-    </div>
-
-    <!-- Hidden Calculator Body -->
-    <div id="calc-wrapper" style="display:none; transition:opacity 0.6s ease, transform 0.6s ease; grid-template-columns:1fr; gap:2.5rem; max-width:900px; margin:0 auto; opacity:0; transform:translateY(20px);">
-
-      <!-- Steps -->
-      <div style="display:grid; grid-template-columns:1fr; gap:2rem;">
-
-        <!-- Step 1 -->
-        <div>
-          <div class="calc-step-label">Krok 1</div>
-          <div class="calc-step-title">Rodzaj mebla</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;" id="type-options">
-            <label class="radio-option selected" style="display:flex; align-items:center; gap:0.6rem;">
-              <input type="radio" name="furniture-type" value="kuchnia" checked onchange="updateCalculator()" />
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7h-6M10 7H4M14 7v10M10 7v10M3 17h18M21 7v10c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2z"></path></svg>
-              <span>Kuchnia</span>
-            </label>
-            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
-              <input type="radio" name="furniture-type" value="szafa" onchange="updateCalculator()" />
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4zM4 12h16M12 4v16M12 12H8M16 12h-4"></path></svg>
-              <span>Szafa / Garderoba</span>
-            </label>
-            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
-              <input type="radio" name="furniture-type" value="lazienka" onchange="updateCalculator()" />
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 10h18M5 10v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9M8 6h8M12 10V6M10 3a2 2 0 0 1 4 0"></path></svg>
-              <span>Meble łazienkowe</span>
-            </label>
-            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
-              <input type="radio" name="furniture-type" value="inne" onchange="updateCalculator()" />
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-              <span>Inne meble</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div>
-          <div class="calc-step-label">Krok 2</div>
-          <div class="calc-step-title">Długość zabudowy: <span id="length-value" style="color:var(--color-accent);">3 mb</span></div>
-          <input type="range" min="1" max="15" value="3" step="0.5" class="calc-slider" id="length-slider" style="margin-top:0.5rem;" oninput="updateCalculator()" />
-          <div style="display:flex; justify-content:space-between; margin-top:0.4rem;">
-            <span style="font-size:0.75rem; color:var(--color-muted);">1 mb</span>
-            <span style="font-size:0.75rem; color:var(--color-muted);">15 mb</span>
-          </div>
-          <div style="font-size:0.85rem; color:var(--color-muted); margin-top:0.75rem; font-weight:500;">*mb - metr mebla</div>
-        </div>
-
-        <!-- Step 3 -->
-        <div>
-          <div class="calc-step-label">Krok 3</div>
-          <div class="calc-step-title">Wybór materiału</div>
-          <div style="display:grid; grid-template-columns:1fr; gap:0.6rem;" id="material-options">
-            <label class="radio-option selected">
-              <input type="radio" name="material" value="standard" checked onchange="updateCalculator()" />
-              <span>Standard (laminat)</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="material" value="premium" onchange="updateCalculator()" />
-              <span>Premium (wys. połysk / lakier)</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="material" value="ekskluzywny" onchange="updateCalculator()" />
-              <span>Ekskluzywny (drewno/kamień)</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div>
-          <div class="calc-step-label">Krok 4</div>
-          <div class="calc-step-title">Miejscowość montażu</div>
-          <div style="display:grid; grid-template-columns:1fr; gap:0.6rem;" id="location-options">
-            <label class="radio-option selected" style="display:flex; align-items:center; gap:0.6rem;">
-              <input type="radio" name="location" value="lokalne" checked onchange="updateCalculator()" />
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Lokalnie — do 20 km (w cenie)</span>
-            </label>
-            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
-              <input type="radio" name="location" value="srednie" onchange="updateCalculator()" />
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              <span>W promieniu 50 km (+5%)</span>
-            </label>
-            <label class="radio-option" style="display:flex; align-items:center; gap:0.6rem;">
-              <input type="radio" name="location" value="dalekie" onchange="updateCalculator()" />
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span>Powyżej 50 km (+10%)</span>
-            </label>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Result -->
-      <div class="price-result">
-        <div class="price-label" style="margin-bottom:0.25rem;">Orientacyjna wycena</div>
-        <div class="price-range" id="price-output" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem, 6vw, 4.5rem); color:var(--color-accent); line-height:1; min-height:1.2em; display:flex; align-items:center; margin-top:0.5rem;">
-          9 000 – 13 500 zł
-        </div>
-        <p style="font-family:'DM Sans',sans-serif; font-size:0.85rem; line-height:1.5; color:rgba(255,255,255,0.55); margin:1.5rem 0;">
-          * Cena orientacyjna za <span id="price-mb">3 mb</span>. Dokładna wycena po bezpłatnych pomiarach u Ciebie.
-        </p>
-        <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
-          <a href="#formularz" class="btn-red" style="display:inline-block; font-size:0.95rem; padding:1.15rem 2.2rem;">Umów bezpłatny pomiar</a>
-          <button onclick="document.getElementById('calc-wrapper').style.opacity='0'; document.getElementById('calc-wrapper').style.transform='translateY(20px)'; setTimeout(()=> {document.getElementById('calc-wrapper').style.display='none'; document.getElementById('btn-show-calc').style.display='inline-block';}, 600);" class="btn-outline" style="font-size:0.95rem; padding:1.15rem 1.4rem; display:inline-flex; align-items:center; gap:0.5rem; justify-content:center; background:rgba(255,255,255,0.05); color:#fff; cursor:pointer;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg> Zwiń
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-  @media (max-width: 767px) {
-    #od-czego .container-xl > div:nth-child(2) {
-      grid-template-columns: 1fr !important;
-    }
-  }
-  @media (min-width: 768px) {
-    #type-options { grid-template-columns: repeat(2, 1fr) !important; }
-    #material-options { grid-template-columns: repeat(3, 1fr) !important; }
-  }
-  @media (min-width: 900px) {
-    #calc-wrapper { grid-template-columns: 1.15fr 0.85fr !important; }
-  }
-</style>
-
-<div class="red-line"></div>
 
 
 <!-- ═══════════════════════════════════════════
@@ -2084,7 +1926,37 @@
             </div>
           </div>
 
-          <!-- Opinia 4 -->
+          <!-- Opinia 4 (Instagram) -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Na profil @planetamebli_ziobro trafiłam przypadkiem, zatrzymało mnie estetyczne wykonanie. Szybko otrzymałam darmowe konsultacje i świetny szkic zabudowy z logicznymi propozycjami układu. Wycena jest bardzo korzystna. Polecam za profesjonalne podejście!&#8221;</p>
+              <div class="review-author">
+                <div class="review-avatar">I</div>
+                <div>
+                  <div class="review-name">Obserwatorka profilu</div>
+                  <div class="review-source">Opinia z Instagrama</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinia 5 (Instagram) -->
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">&#8222;Dziękujemy zespołowi PLANETAMEBLI za sprostanie naszym potrzebom na etapie projektu. Firma świetnie doradza i realizuje nawet niestandardowe rozwiązania, co jest rzadkością w branży. Polecamy w 100% każdemu, kto szuka solidnej i zręcznej ekipy!&#8221;</p>
+              <div class="review-author">
+                <div class="review-avatar">Z</div>
+                <div>
+                  <div class="review-name">Zadowoleni Klienci</div>
+                  <div class="review-source">Opinia z Instagrama</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinia 6 -->
           <div class="review-card">
             <div class="review-card-inner">
               <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -2099,7 +1971,7 @@
             </div>
           </div>
 
-          <!-- Opinia 5 -->
+          <!-- Opinia 7 -->
           <div class="review-card">
             <div class="review-card-inner">
               <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -2114,7 +1986,7 @@
             </div>
           </div>
 
-          <!-- Opinia 6 -->
+          <!-- Opinia 8 -->
           <div class="review-card">
             <div class="review-card-inner">
               <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -2161,64 +2033,19 @@
 ═══════════════════════════════════════════ -->
 <section id="formularz" class="section-pad">
   <div class="container-xl">
-    <div style="display:grid; grid-template-columns:1fr; gap:4rem; align-items:start;">
+    <div id="contact-outer-grid" style="display:grid; grid-template-columns:1fr; gap:3rem; align-items:start;">
 
-      <!-- Form -->
-      <div class="reveal">
-        <span class="eyebrow" style="color:var(--color-accent);">Bezpłatna konsultacja</span>
-        <h2 class="section-h2 section-h2-dark" style="margin-bottom:0.5rem;">UMÓW<br/>BEZPŁATNY POMIAR</h2>
-        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; color:var(--color-muted); line-height:1.7; margin-bottom:2.5rem;">
-          Wypełnij formularz, oddzwonimy w ciągu 24h.
-        </p>
-
-        <form action="mailto:ziobro@planetamebli.eu" method="POST" enctype="text/plain" style="display:flex; flex-direction:column; gap:1.25rem;">
-
-          <div style="display:grid; grid-template-columns:1fr; gap:1.25rem;" class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="f-name">Imię i nazwisko *</label>
-              <input type="text" id="f-name" name="Imię i nazwisko" class="form-input" placeholder="Jan Kowalski" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="f-phone">Numer telefonu *</label>
-              <input type="tel" id="f-phone" name="Telefon" class="form-input" placeholder="+48 600 000 000" required />
-            </div>
-          </div>
-
-          <div style="display:grid; grid-template-columns:1fr; gap:1.25rem;" class="form-row-2">
-            <div class="form-group">
-              <label class="form-label" for="f-type">Rodzaj mebli</label>
-              <select id="f-type" name="Rodzaj mebli" class="form-select">
-                <option value="">Wybierz...</option>
-                <option>Kuchnia na wymiar</option>
-                <option>Szafa / garderoba</option>
-                <option>Meble łazienkowe</option>
-                <option>Meble pokojowe</option>
-                <option>Inne / kilka rodzajów</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="f-city">Miasto / miejscowość</label>
-              <input type="text" id="f-city" name="Miasto" class="form-input" placeholder="np. Kraków" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="f-msg">Wiadomość</label>
-            <textarea id="f-msg" name="Wiadomość" class="form-textarea" placeholder="Opisz czego szukasz — rozmiar pomieszczenia, styl, termin..."></textarea>
-          </div>
-
-          <button type="submit" class="btn-red" style="width:100%; text-align:center; padding:1.1rem; font-size:1rem;">
-            Wyślij zapytanie →
-          </button>
-
-          <p style="font-family:'DM Sans',sans-serif; font-size:0.75rem; color:var(--color-muted); text-align:center;">
-            Twoje dane są bezpieczne. Kontaktujemy się tylko w sprawie zapytania.
+      <!-- Note about email (Order 1 on mobile) -->
+      <div id="grid-note" class="reveal" style="order:1;">
+        <div style="padding:1.75rem 2rem; border:2px solid var(--color-accent); background:#fff; box-shadow:0 10px 30px rgba(204,28,28,0.1);">
+          <p style="font-family:'DM Sans',sans-serif; font-size:1.05rem; color:var(--color-accent); line-height:1.6; font-weight:600;">
+            <strong style="text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:0.5rem;">Ważna uwaga:</strong> Na wiadomości e-mail odpowiadamy wyłącznie po wcześniejszym kontakcie telefonicznym. Zadzwoń do nas teraz, aby ustalić darmowy termin pomiaru.
           </p>
-        </form>
+        </div>
       </div>
 
-      <!-- Contact info -->
-      <div class="reveal reveal-delay-2" style="display:flex; flex-direction:column; gap:2.5rem;">
+      <!-- Contact info (Order 2 on mobile) -->
+      <div id="grid-info" class="reveal reveal-delay-1" style="display:flex; flex-direction:column; gap:2.5rem; order:2;">
         <div>
           <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--color-text); margin-bottom:1.5rem;">
             Wolisz zadzwonić? Chętnie odbierzemy.
@@ -2275,15 +2102,69 @@
             </a>
           </div>
         </div>
-
-        <!-- Note about email -->
-        <div style="padding:1.25rem 1.5rem; border:1px solid var(--color-border); background:#fff;">
-          <p style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:var(--color-muted); line-height:1.7;">
-            <strong style="color:var(--color-text);">Uwaga:</strong> Na maile odpowiadamy po wcześniejszym kontakcie telefonicznym. Zadzwoń, żeby umówić termin pomiaru.
-          </p>
-        </div>
-
       </div>
+
+      <!-- Form (Order 3 on mobile) -->
+      <div id="grid-form" class="reveal reveal-delay-2" style="order:3;">
+        <span class="eyebrow" style="color:var(--color-accent);">Bezpłatna konsultacja</span>
+        <h2 class="section-h2 section-h2-dark" style="margin-bottom:0.5rem;">UMÓW<br/>BEZPŁATNY POMIAR</h2>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.95rem; color:var(--color-muted); line-height:1.7; margin-bottom:2.5rem;">
+          Wypełnij formularz, oddzwonimy w ciągu 24h.
+        </p>
+
+        <form action="mailto:ziobro@planetamebli.eu" method="POST" enctype="text/plain" style="display:flex; flex-direction:column; gap:1.25rem;">
+
+          <div style="display:grid; grid-template-columns:1fr; gap:1.25rem;" class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="f-name">Imię i nazwisko *</label>
+              <input type="text" id="f-name" name="Imię i nazwisko" class="form-input" placeholder="Jan Kowalski" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-phone">Numer telefonu *</label>
+              <input type="tel" id="f-phone" name="Telefon" class="form-input" placeholder="+48 600 000 000" required />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr; gap:1.25rem;" class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="f-type">Rodzaj mebli</label>
+              <select id="f-type" name="Rodzaj mebli" class="form-select">
+                <option value="">Wybierz...</option>
+                <option>Kuchnia na wymiar</option>
+                <option>Szafa / garderoba</option>
+                <option>Meble łazienkowe</option>
+                <option>Meble pokojowe</option>
+                <option>Inne / kilka rodzajów</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-city">Miasto / miejscowość</label>
+              <input type="text" id="f-city" name="Miasto" class="form-input" placeholder="np. Kraków" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-msg">Wiadomość</label>
+            <textarea id="f-msg" name="Wiadomość" class="form-textarea" placeholder="Opisz czego szukasz — rozmiar pomieszczenia, styl, termin..." style="min-height:220px;"></textarea>
+          </div>
+
+          <div class="form-group" style="display:flex; align-items:flex-start; gap:0.75rem; margin:0.25rem 0 0.5rem 0;">
+            <input type="checkbox" id="f-consent" name="Zgoda RODO" required style="accent-color:var(--color-accent); margin-top:0.25rem; width:18px; height:18px; cursor:pointer;" />
+            <label for="f-consent" style="font-family:'DM Sans',sans-serif; font-size:0.82rem; color:var(--color-muted); line-height:1.5; cursor:pointer;">
+              Wyrażam zgodę na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na przesłane zapytanie. *
+            </label>
+          </div>
+
+          <button type="submit" class="btn-red" style="width:100%; text-align:center; padding:1.1rem; font-size:1rem;">
+            Wyślij zapytanie →
+          </button>
+
+          <p style="font-family:'DM Sans',sans-serif; font-size:0.75rem; color:var(--color-muted); text-align:center;">
+            Twoje dane są bezpieczne. Kontaktujemy się tylko w sprawie zapytania.
+          </p>
+        </form>
+      </div>
+
     </div>
 
     <!-- Google Maps Embed -->
@@ -2306,7 +2187,15 @@
     .form-row-2 { grid-template-columns: 1fr 1fr !important; }
   }
   @media (min-width: 1024px) {
-    #formularz .container-xl > div { grid-template-columns: 1.2fr 0.8fr !important; }
+    #contact-outer-grid { 
+      grid-template-columns: 1.2fr 0.8fr !important; 
+      grid-template-areas: 
+        "form info"
+        "form note" !important; 
+    }
+    #grid-form { grid-area: form; order: unset !important; }
+    #grid-info { grid-area: info; order: unset !important; }
+    #grid-note { grid-area: note; order: unset !important; }
   }
 </style>
 
@@ -2345,7 +2234,7 @@
         <div style="display:flex; flex-direction:column; gap:0.6rem;">
           <a href="#uslugi" class="footer-link">Usługi</a>
           <a href="#realizacje" class="footer-link">Realizacje</a>
-          <a href="#kalkulator" class="footer-link">Wycena</a>
+
           <a href="#proces" class="footer-link">Jak działamy</a>
           <a href="#formularz" class="footer-link">Kontakt</a>
         </div>
@@ -2368,8 +2257,8 @@
       <p style="font-family:'DM Sans',sans-serif; font-size:0.78rem; color:rgba(255,255,255,0.3);">
         &copy; <span id="footer-year">2026</span> Planeta Mebli &mdash; Józef Ziobro. Spytkowice.
       </p>
-      <p style="font-family:'DM Sans',sans-serif; font-size:0.72rem; color:rgba(255,255,255,0.2);">
-        Strona wykonana przez FilarAI
+      <p style="font-family:'DM Sans',sans-serif; font-size:0.75rem; color:rgba(255,255,255,0.4);">
+        Realizacja: <a href="https://filarai.com" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none; font-weight:600; transition:color 0.2s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#fff'">FilarAI</a>
       </p>
     </div>
   </div>
@@ -2395,12 +2284,21 @@
   let mobileCtaBar = null;
 
   window.addEventListener('scroll', function() {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    const scrollY = window.scrollY;
+    navbar.classList.toggle('scrolled', scrollY > 60);
+
+    // Scroll progress calculation
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollY / totalHeight) * 100;
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (scrollProgress) {
+      scrollProgress.style.width = progress + '%';
+    }
 
     // Toggle mobile sticky CTA
     if (!mobileCtaBar) mobileCtaBar = document.getElementById('mobile-cta-bar');
     if (mobileCtaBar && heroSection) {
-      if (window.scrollY > (heroSection.offsetHeight - 100)) {
+      if (scrollY > (heroSection.offsetHeight - 100)) {
         mobileCtaBar.classList.add('visible');
       } else {
         mobileCtaBar.classList.remove('visible');
@@ -2770,52 +2668,7 @@
     startReviewAutoplay();
   })();
 
-  // ── Price calculator ──
-  const priceRanges = {
-    kuchnia:   { standard: [2000,2800], premium: [3000,4500], ekskluzywny: [5000,7000] },
-    szafa:     { standard: [1500,2200], premium: [2500,3500], ekskluzywny: [4000,5500] },
-    lazienka:  { standard: [1800,2500], premium: [2800,4000], ekskluzywny: [4500,6000] },
-    inne:      { standard: [1500,2500], premium: [2500,4000], ekskluzywny: [4000,6000] }
-  };
-  function formatPrice(n) { return n.toLocaleString('pl-PL') + ' zł'; }
-  function updateCalculator() {
-    const typeEl = document.querySelector('input[name="furniture-type"]:checked');
-    const materialEl = document.querySelector('input[name="material"]:checked');
-    const locationEl = document.querySelector('input[name="location"]:checked');
-    const lengthEl = document.getElementById('length-slider');
-    if (!typeEl || !materialEl || !lengthEl || !locationEl) return;
-    const range = priceRanges[typeEl.value][materialEl.value];
-    const length = parseFloat(lengthEl.value);
-    
-    let locMult = 1.0;
-    if (locationEl.value === 'srednie') locMult = 1.05;
-    if (locationEl.value === 'dalekie') locMult = 1.10;
-    
-    const minTotal = Math.round((range[0] * length * locMult) / 100) * 100;
-    const maxTotal = Math.round((range[1] * length * locMult) / 100) * 100;
-    document.getElementById('price-output').textContent = formatPrice(minTotal) + ' – ' + formatPrice(maxTotal);
-    document.getElementById('price-mb').textContent = length + ' mb';
-    const pct = ((length - 1) / 14) * 100;
-    lengthEl.style.setProperty('--slider-pct', pct + '%');
-    document.getElementById('length-value').textContent = length + ' mb';
-  }
-  function setupRadioGroup(name) {
-    document.querySelectorAll('input[name="' + name + '"]').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        document.querySelectorAll('input[name="' + name + '"]').forEach(function(r) {
-          r.closest('.radio-option').classList.remove('selected');
-        });
-        radio.closest('.radio-option').classList.add('selected');
-        updateCalculator();
-      });
-    });
-  }
-  setupRadioGroup('furniture-type');
-  setupRadioGroup('material');
-  setupRadioGroup('location');
-  var lengthSlider = document.getElementById('length-slider');
-  if (lengthSlider) lengthSlider.addEventListener('input', updateCalculator);
-  updateCalculator();
+
 
 })();
 </script>
