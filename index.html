@@ -340,6 +340,7 @@
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.5);
       margin-top: 4px;
+      text-indent: 0.14em;
     }
 
     .stat-sep {
@@ -353,6 +354,12 @@
         height: 60px;
         background: var(--color-accent);
         opacity: 0.5;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #stats .reveal {
+        padding: 1.25rem 0.5rem !important;
       }
     }
 
@@ -1249,6 +1256,12 @@
 
     .hero-slide.active {
       opacity: 1;
+    }
+
+    @media (min-width: 768px) {
+      .hero-slide:nth-child(5) {
+        display: none !important;
+      }
     }
 
     .hero-indicator-dots {
@@ -3646,10 +3659,20 @@
 
         function goToHeroSlide(n) {
           heroSlides[heroCurrent].classList.remove('active');
-          heroDots[heroCurrent].classList.remove('active');
-          heroCurrent = (n + heroSlides.length) % heroSlides.length;
+          if (heroDots[heroCurrent]) {
+            heroDots[heroCurrent].classList.remove('active');
+          }
+          var next = (n + heroSlides.length) % heroSlides.length;
+          var attempts = 0;
+          while (window.getComputedStyle(heroSlides[next]).display === 'none' && attempts < heroSlides.length) {
+            next = (next + 1) % heroSlides.length;
+            attempts++;
+          }
+          heroCurrent = next;
           heroSlides[heroCurrent].classList.add('active');
-          heroDots[heroCurrent].classList.add('active');
+          if (heroDots[heroCurrent]) {
+            heroDots[heroCurrent].classList.add('active');
+          }
         }
 
         function startHeroAutoplay() {
