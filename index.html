@@ -1464,34 +1464,30 @@
 
     /* ── Mobile sticky CTA ── */
     #mobile-cta-bar {
-      display: none;
+      display: flex;
+      position: fixed;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      justify-content: center;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(100%);
+      pointer-events: none;
+    }
+
+    #mobile-cta-bar.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    body {
+      padding-bottom: 80px;
     }
 
     @media (max-width: 767px) {
-      #mobile-cta-bar {
-        display: flex;
-        position: fixed;
-        bottom: 1.5rem;
-        left: 0;
-        right: 0;
-        z-index: 200;
-        justify-content: center;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        opacity: 0;
-        transform: translateY(100%);
-        pointer-events: none;
-      }
-
-      #mobile-cta-bar.visible {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      body {
-        padding-bottom: 56px;
-      }
-
       .parallax-sep {
         background-attachment: scroll !important;
       }
